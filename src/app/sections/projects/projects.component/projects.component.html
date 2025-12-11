@@ -1,0 +1,42 @@
+<section id="projects" class="section">
+  <div class="section-inner">
+    <header class="section-heading">
+      <h2>Selected Projects</h2>
+      <p>
+        Craft, polish, and experiments that show how you think about product and experience.
+      </p>
+    </header>
+
+    <div class="project-grid">
+      <article *ngFor="let project of projects" class="project-card">
+        <div class="project-header">
+          <h3>{{ project.name }}</h3>
+          <p class="tagline">{{ project.tagline }}</p>
+        </div>
+
+        <p class="description">{{ project.description }}</p>
+
+        <div class="meta">
+          <span *ngIf="project.period" class="pill">{{ project.period }}</span>
+          <span
+            *ngIf="project.technologies?.length"
+            class="tech"
+          >
+            {{ project.technologies?.join(' · ') }}
+          </span>
+        </div>
+
+        <a
+          *ngIf="project.linkHref"
+          class="project-link"
+          [href]="project.linkHref"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ project.linkLabel || 'View project' }}
+          <span aria-hidden="true">›</span>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>

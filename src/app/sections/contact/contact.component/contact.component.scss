@@ -1,0 +1,73 @@
+.contact-inner {
+  text-align: center;
+}
+
+.section-heading.center {
+  margin-bottom: 2.5rem;
+}
+
+.contact-card {
+  margin: 0 auto;
+  max-width: 36rem;
+  padding: 2rem 2.25rem;
+  border-radius: 1.6rem;
+  background: linear-gradient(145deg, #ffffff, #f5f5f7);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow:
+    0 22px 44px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.9);
+  display: grid;
+  gap: 1.5rem;
+}
+
+.label {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+  color: var(--muted-color);
+  margin-bottom: 0.4rem;
+}
+
+.email {
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.email:hover {
+  text-decoration: underline;
+}
+
+.phone,
+.location {
+  margin-top: 0.4rem;
+  color: var(--muted-color-strong);
+}
+
+.links .link-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.links a {
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-color);
+}
+
+.links a:hover {
+  background: #ffffff;
+}
+
+.footnote {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--muted-color);
+}

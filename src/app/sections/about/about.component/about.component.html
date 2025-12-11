@@ -1,0 +1,38 @@
+<section id="about" class="section">
+  <div class="section-inner two-column">
+    <div class="section-header">
+      <h2>About</h2>
+      <p>
+        A quick snapshot of who you are, how you work, and what you care about.
+        Replace this copy with your own voice.
+      </p>
+    </div>
+
+    <div class="section-body">
+      <p class="about-main">
+        {{ resume.summary }}
+      </p>
+
+      <div class="about-grid">
+        <div class="about-item">
+          <h3>Location</h3>
+          <p>{{ resume.location }}</p>
+        </div>
+
+        <div class="about-item">
+          <h3>Availability</h3>
+          <p>{{ resume.contact.availability }}</p>
+        </div>
+
+        <div class="about-item" *ngIf="resume.education.length">
+          <h3>Education</h3>
+          <div *ngFor="let edu of resume.education">
+            <p class="edu-degree">{{ edu.degree }}</p>
+            <p class="edu-school">{{ edu.school }}</p>
+            <p class="edu-meta">{{ edu.period }} &mdash; {{ edu.location }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

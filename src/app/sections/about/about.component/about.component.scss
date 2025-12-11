@@ -1,0 +1,72 @@
+.section {
+  padding-block: 4.5rem;
+}
+
+.section-inner {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding-inline: 1.5rem;
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.section-header > p {
+  color: var(--muted-color);
+  max-width: 26rem;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.about-main {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1.5rem;
+}
+
+.about-item h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted-color);
+  margin-bottom: 0.4rem;
+}
+
+.about-item p {
+  margin: 0;
+}
+
+.edu-degree {
+  font-weight: 600;
+}
+
+.edu-school {
+  color: var(--muted-color-strong);
+}
+
+.edu-meta {
+  color: var(--muted-color);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 900px) {
+  .two-column {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+}

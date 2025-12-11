@@ -1,0 +1,45 @@
+<section id="contact" class="section contact">
+  <div class="section-inner contact-inner">
+    <header class="section-heading center">
+      <h2>Let’s talk.</h2>
+      <p>
+        If this resonates with what you’re building, I’d love to hear from you.
+      </p>
+    </header>
+
+    <div class="contact-card">
+      <div class="primary">
+        <p class="label">Email</p>
+        <a class="email" href="mailto:{{ contact.email }}">
+          {{ contact.email }}
+        </a>
+
+        <p *ngIf="contact.phone" class="phone">
+          {{ contact.phone }}
+        </p>
+
+        <p class="location">
+          {{ contact.location }}
+        </p>
+      </div>
+
+      <div class="links" *ngIf="links.length">
+        <p class="label">Elsewhere</p>
+        <div class="link-list">
+          <a
+            *ngFor="let link of links"
+            [href]="link.href"
+            [attr.target]="link.external ? '_blank' : null"
+            [attr.rel]="link.external ? 'noopener noreferrer' : null"
+          >
+            {{ link.label }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <p class="footnote">
+      Designed & built with Angular, inspired by the polish of apple.com.
+    </p>
+  </div>
+</section>

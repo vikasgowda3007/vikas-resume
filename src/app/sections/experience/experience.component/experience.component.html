@@ -1,0 +1,42 @@
+<section id="experience" class="section">
+  <div class="section-inner">
+    <header class="section-heading">
+      <h2>Experience</h2>
+      <p>
+        Roles where you shipped things that mattered, worked with great teams, and made users happy.
+      </p>
+    </header>
+
+    <div class="timeline">
+      <article *ngFor="let item of experience" class="timeline-item">
+        <div class="timeline-meta">
+          <div class="dot"></div>
+          <p class="period">{{ item.period }}</p>
+        </div>
+
+        <div class="card">
+          <header class="card-header">
+            <h3>{{ item.role }}</h3>
+            <p class="company">{{ item.company }}</p>
+            <p class="location" *ngIf="item.location">{{ item.location }}</p>
+          </header>
+
+          <p class="description">
+            {{ item.description }}
+          </p>
+
+          <ul class="highlights">
+            <li *ngFor="let h of item.highlights">
+              {{ h }}
+            </li>
+          </ul>
+
+          <p class="tech" *ngIf="item.technologies?.length">
+            <span>Tech:</span>
+            {{ item.technologies?.join(' · ') }}
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

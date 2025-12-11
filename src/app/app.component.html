@@ -1,0 +1,12 @@
+<div class="app-shell">
+  <app-navbar [name]="resume.name"></app-navbar>
+
+  <main>
+    <app-hero [resume]="resume"></app-hero>
+    <app-about [resume]="resume"></app-about>
+    <app-experience [experience]="resume.experience"></app-experience>
+    <app-projects [projects]="resume.projects"></app-projects>
+    <app-skills [skills]="resume.skills"></app-skills>
+    <app-contact [contact]="resume.contact" [links]="resume.links"></app-contact>
+  </main>
+</div>

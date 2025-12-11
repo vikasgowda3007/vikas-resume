@@ -1,0 +1,21 @@
+<section id="skills" class="section">
+  <div class="section-inner">
+    <header class="section-heading">
+      <h2>Skills</h2>
+      <p>
+        A quick overview of tools, stacks, and strengths you bring to a team.
+      </p>
+    </header>
+
+    <div class="skill-grid">
+      <article *ngFor="let s of skills" class="skill-card">
+        <h3>{{ s.category }}</h3>
+        <ul>
+          <li *ngFor="let item of s.items">
+            {{ item }}
+          </li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
