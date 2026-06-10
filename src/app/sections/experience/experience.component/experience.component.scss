@@ -1,130 +1,213 @@
-.experience-shell {
-  display: grid;
-  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
-  gap: clamp(2rem, 5vw, 4rem);
+/* Experience — vertical timeline with a fading accent rail, mono period
+   column, and glass entry cards. Tokens only; light + dark safe. */
+
+.experience-heading {
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
 }
 
-.section-heading {
+/* ----- Timeline scaffold ----- */
+
+.experience-timeline {
+  --rail-w: 8.75rem;
+  --rail-gap: 3.25rem;
+  --rail-x: calc(var(--rail-w) + var(--rail-gap) / 2);
+  position: relative;
+  display: grid;
+  gap: clamp(2rem, 4vw, 2.75rem);
+}
+
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  left: var(--rail-x);
+  top: 0.75rem;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    var(--accent-color),
+    var(--line-strong) 55%,
+    transparent 98%
+  );
+  pointer-events: none;
+}
+
+.timeline-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--rail-w) minmax(0, 1fr);
+  column-gap: var(--rail-gap);
+  align-items: start;
+}
+
+/* Node dot, aligned to the card's eyebrow line */
+.timeline-entry::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--rail-x) - 3.5px);
+  top: 2.12rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  box-shadow:
+    0 0 0 4px var(--accent-soft),
+    0 0 16px var(--accent-glow);
+  z-index: 1;
+}
+
+/* ----- Period rail ----- */
+
+.entry-rail {
   position: sticky;
   top: 7rem;
-  align-self: start;
+  padding-top: 1.78rem;
+  text-align: right;
 }
 
-.section-heading > h2 {
-  max-width: 10ch;
-  font-size: clamp(2rem, 3.1vw, 3.1rem);
-  line-height: 1.03;
-  letter-spacing: -0.06em;
-  margin-bottom: 0.9rem;
+.entry-period {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-color-strong);
+  line-height: 1.6;
 }
 
-.section-heading > p:last-child {
-  color: var(--muted-color);
-  max-width: 25rem;
-  line-height: 1.7;
+.entry-location {
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-3);
 }
 
-.experience-list {
-  display: grid;
-  gap: 1.4rem;
+/* ----- Entry card ----- */
+
+.entry-card {
+  padding: 1.8rem clamp(1.5rem, 2.8vw, 2rem);
 }
 
-.experience-item {
-  display: grid;
-  grid-template-columns: minmax(120px, 0.32fr) minmax(0, 1fr);
-  gap: 1.5rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--line-color);
+.entry-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-shadow-hover), inset 0 1px 0 var(--glass-inner);
+  border-color: var(--line-strong);
 }
 
-.experience-period p {
-  margin: 0;
+.entry-company {
+  margin-bottom: 0.6rem;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.16em;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--muted-color);
+  color: var(--accent-ink);
 }
 
-.experience-body {
-  padding: 1.35rem 1.4rem 1.45rem;
-  border-radius: 1.6rem;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.48)),
-    var(--surface-color);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
-}
-
-.experience-header {
-  margin-bottom: 0.75rem;
-}
-
-.company {
-  margin-bottom: 0.35rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted-color);
-}
-
-.experience-header h3 {
-  font-size: clamp(1.2rem, 1.9vw, 1.55rem);
-  letter-spacing: -0.04em;
-  margin-bottom: 0.35rem;
-}
-
-.location {
-  font-size: 0.88rem;
-  color: var(--muted-color);
-}
-
-.description {
+.entry-role {
   margin-bottom: 0.85rem;
+  font-size: var(--text-h3);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.entry-description {
+  max-width: 62ch;
   line-height: 1.75;
   color: var(--muted-color-strong);
 }
 
-.impact {
-  margin-bottom: 0.95rem;
-  font-weight: 600;
+/* Impact callout strip */
+.entry-impact {
+  margin-top: 1.15rem;
+  padding: 0.9rem 1.1rem;
+  border-left: 2px solid var(--accent-color);
+  border-radius: 0.6rem;
+  background: var(--accent-softer);
   line-height: 1.7;
+  font-weight: 500;
+  color: var(--muted-color-strong);
 }
 
-.highlights {
-  padding-left: 1.2rem;
-  margin: 0 0 0.75rem 0;
+.impact-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+
+/* Highlights */
+.entry-highlights {
+  list-style: none;
+  margin: 1.3rem 0 0;
+  padding: 0;
   display: grid;
-  gap: 0.45rem;
+  gap: 0.55rem;
 }
 
-.highlights li {
+.entry-highlights li {
+  position: relative;
+  padding-left: 1.4rem;
   line-height: 1.65;
   color: var(--muted-color-strong);
 }
 
-.tech {
-  margin-top: 1rem;
-  font-size: 0.88rem;
-  color: var(--muted-color);
+.entry-highlights li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent-color);
+  font-weight: 600;
 }
 
-.tech span {
-  font-weight: 700;
-  color: var(--muted-color-strong);
+/* Technologies */
+.entry-tech {
+  list-style: none;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-@media (max-width: 900px) {
-  .experience-shell {
-    grid-template-columns: minmax(0, 1fr);
+.entry-tech .chip {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.78rem;
+}
+
+/* ----- Responsive ----- */
+
+@media (max-width: 860px) {
+  .experience-timeline::before,
+  .timeline-entry::before {
+    display: none;
   }
 
-  .section-heading {
+  .timeline-entry {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.9rem;
+  }
+
+  .entry-rail {
     position: static;
+    padding-top: 0;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.3rem 1.1rem;
   }
 
-  .experience-item {
-    grid-template-columns: minmax(0, 1fr);
+  .entry-location {
+    margin-top: 0;
   }
 }

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_preview.css" />
+<style>
+  body.card { display:flex; align-items:center; gap: 28px; padding: 24px; }
+  .mark-block { display:flex; flex-direction:column; align-items:center; gap: 10px; }
+  .mark { width: 96px; height: 96px; border-radius: 22px; background: #ffffff; border: 1px solid var(--line-color); box-shadow: 0 12px 26px rgba(15,23,42,0.08); display:flex; align-items:center; justify-content:center; }
+  .mark img { width: 64px; height: 64px; filter: drop-shadow(0 10px 18px rgba(76,144,255,0.18)); }
+  .mark-small { width: 56px; height: 56px; border-radius: 14px; }
+  .mark-small img { width: 36px; height: 36px; }
+  .mark-tiny { width: 36px; height: 36px; border-radius: 10px; }
+  .mark-tiny img { width: 22px; height: 22px; }
+  .label { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--fg-3); }
+  .desc { flex:1; font-size: 14px; line-height: 1.6; color: var(--fg-2); }
+  .desc b { color: var(--fg-1); }
+</style>
+</head>
+<body class="card">
+  <div class="mark-block">
+    <div class="mark"><img src="../assets/favicon.svg" alt="" /></div>
+    <span class="label">96 · MARK</span>
+  </div>
+  <div class="mark-block">
+    <div class="mark mark-small"><img src="../assets/favicon.svg" alt="" /></div>
+    <span class="label">56 · NAV</span>
+  </div>
+  <div class="mark-block">
+    <div class="mark mark-tiny"><img src="../assets/favicon.svg" alt="" /></div>
+    <span class="label">32 · FAVICON</span>
+  </div>
+  <div class="desc">
+    <b>Brand mark.</b> Single SVG monogram (<code>favicon.svg</code>). Always rendered with a subtle blue drop-shadow when over light glass. Border radius scales with display size: 0.8rem at nav scale, larger when used as a feature.
+  </div>
+</body>
+</html>

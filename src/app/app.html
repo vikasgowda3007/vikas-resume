@@ -11,7 +11,20 @@
   </main>
 
   <footer class="app-footer">
-    <p>{{ resume.name }} · Tempe, AZ · F-1 student on CPT</p>
-    <p>Angular-first full-stack engineer building secure products with a product eye.</p>
+    <div class="footer-inner">
+      <div class="footer-id">
+        <p class="footer-name">{{ resume.name }}</p>
+        <p class="footer-meta">Tempe, AZ · F-1 student on CPT</p>
+      </div>
+
+      <p class="footer-line">
+        Angular-first full-stack engineer building secure products with a product eye.
+      </p>
+
+      <div class="footer-end">
+        <p class="footer-copy">© {{ year }}</p>
+        <button type="button" class="footer-top" (click)="scrollToTop()">Back to top ↑</button>
+      </div>
+    </div>
   </footer>
 </div>

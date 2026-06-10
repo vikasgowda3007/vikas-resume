@@ -26,4 +26,15 @@ export class HeroComponent {
   get actionLinks(): ResumeLink[] {
     return this.resume.links.filter((link) => !isLinkedInProfileLink(link.href));
   }
+
+  /** Unique technologies across all roles, for the ambient ticker. */
+  get marqueeItems(): string[] {
+    const seen = new Set<string>();
+    for (const role of this.resume.experience) {
+      for (const tech of role.technologies ?? []) {
+        seen.add(tech);
+      }
+    }
+    return [...seen];
+  }
 }

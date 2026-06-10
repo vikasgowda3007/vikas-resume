@@ -1,44 +1,46 @@
 <section id="experience" class="section">
-  <div class="section-inner experience-shell">
-    <header class="section-heading">
-      <p class="section-label">Experience</p>
-      <h2>Six years building secure, business-critical software.</h2>
-      <p>
+  <div class="section-inner">
+    <header class="section-heading experience-heading">
+      <p class="section-label" [appReveal]="0">02 — Experience</p>
+      <h2 [appReveal]="80">Six years building secure, business-critical software.</h2>
+      <p [appReveal]="140">
         From telecom messaging infrastructure to enterprise data masking, the through-line has been reliability, user trust, and execution under real product pressure.
       </p>
     </header>
 
-    <div class="experience-list">
-      <article *ngFor="let item of experience" class="experience-item">
-        <div class="experience-period">
-          <p>{{ item.period }}</p>
+    <div class="experience-timeline">
+      <article
+        *ngFor="let item of experience; let i = index"
+        class="timeline-entry"
+        [appReveal]="i * 90"
+      >
+        <div class="entry-rail">
+          <p class="entry-period">{{ item.period }}</p>
+          <p class="entry-location" *ngIf="item.location">{{ item.location }}</p>
         </div>
 
-        <div class="experience-body">
-          <header class="experience-header">
-            <p class="company">{{ item.company }}</p>
-            <h3>{{ item.role }}</h3>
-            <p class="location" *ngIf="item.location">{{ item.location }}</p>
-          </header>
+        <div class="glass-card entry-card">
+          <p class="entry-company">{{ item.company }}</p>
+          <h3 class="entry-role">{{ item.role }}</h3>
 
-          <p class="description">
+          <p class="entry-description">
             {{ item.description }}
           </p>
 
-          <p class="impact" *ngIf="item.impact">
+          <p class="entry-impact" *ngIf="item.impact">
+            <span class="impact-label">Impact</span>
             {{ item.impact }}
           </p>
 
-          <ul class="highlights">
+          <ul class="entry-highlights">
             <li *ngFor="let h of item.highlights">
               {{ h }}
             </li>
           </ul>
 
-          <p class="tech" *ngIf="item.technologies?.length">
-            <span>Tech:</span>
-            {{ item.technologies?.join(' · ') }}
-          </p>
+          <ul class="entry-tech" *ngIf="item.technologies?.length">
+            <li class="chip" *ngFor="let tech of item.technologies">{{ tech }}</li>
+          </ul>
         </div>
       </article>
     </div>

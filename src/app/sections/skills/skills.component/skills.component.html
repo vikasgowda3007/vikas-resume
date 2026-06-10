@@ -1,21 +1,32 @@
 <section id="skills" class="section">
-  <div class="section-inner skills-shell">
-    <header class="section-heading">
-      <p class="section-label">Operating system</p>
-      <h2>Angular first, backend fluent, and comfortable with AI-adjacent tooling.</h2>
+  <div class="section-inner">
+    <header class="section-heading" appReveal>
+      <p class="section-label">04 — Operating system</p>
+      <h2>Angular first, backend fluent, comfortable with AI-adjacent tooling.</h2>
       <p>
-        The strongest through-line is full-stack product delivery: shaping frontends, wiring APIs, debugging production systems, and keeping releases moving.
+        The strongest through-line is full-stack product delivery: shaping frontends, wiring APIs,
+        debugging production systems, and keeping releases moving.
       </p>
     </header>
 
-    <div class="skill-groups">
-      <article *ngFor="let s of skills" class="skill-group">
+    <div class="skill-grid">
+      <article
+        *ngFor="let s of skills; let i = index"
+        class="skill-card glass-card"
+        [appReveal]="70 * i"
+      >
+        <p class="skill-index" aria-hidden="true">0{{ i + 1 }}</p>
         <h3>{{ s.category }}</h3>
-        <div class="skill-list">
-          <span *ngFor="let item of s.items">
-            {{ item }}
-          </span>
-        </div>
+
+        <ul *ngIf="isListCategory(s); else chips" class="skill-lines">
+          <li *ngFor="let item of s.items">{{ item }}</li>
+        </ul>
+
+        <ng-template #chips>
+          <div class="skill-chips">
+            <span *ngFor="let item of s.items" class="chip">{{ item }}</span>
+          </div>
+        </ng-template>
       </article>
     </div>
   </div>

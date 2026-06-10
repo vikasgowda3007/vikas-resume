@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_preview.css" />
+<style>
+  body { padding: 20px; }
+  .scale { display: flex; flex-direction: column; gap: 14px; }
+  .row-item { display: flex; align-items: baseline; gap: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line-color); }
+  .row-item:last-child { border-bottom: 0; }
+  .label-col { width: 130px; flex-shrink: 0; }
+  .specimen { color: var(--fg-1); }
+  .h-name { font-size: 56px; font-weight: 800; line-height: 0.84; letter-spacing: -0.095em; }
+  .h-display { font-size: 32px; font-weight: 600; line-height: 0.92; letter-spacing: -0.065em; }
+  .h-h2 { font-size: 28px; font-weight: 600; letter-spacing: -0.06em; }
+  .h-role { font-size: 20px; font-weight: 500; letter-spacing: -0.04em; color: var(--fg-2); }
+  .h-body { font-size: 16px; color: var(--fg-2); }
+  .h-mono { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-3); }
+</style>
+</head>
+<body class="card">
+  <div class="scale">
+    <div class="row-item">
+      <div class="label-col"><div class="eyebrow">Display name</div><div class="h-mono" style="margin-top:4px;">Manrope 800 · -0.095em</div></div>
+      <div class="specimen h-name">Vikas K.</div>
+    </div>
+    <div class="row-item">
+      <div class="label-col"><div class="eyebrow">Display headline</div><div class="h-mono" style="margin-top:4px;">Manrope 600 · -0.065em</div></div>
+      <div class="specimen h-display">Secure products. Polished interfaces.</div>
+    </div>
+    <div class="row-item">
+      <div class="label-col"><div class="eyebrow">Section H2</div><div class="h-mono" style="margin-top:4px;">Manrope 600 · -0.06em</div></div>
+      <div class="specimen h-h2">Six years building secure software.</div>
+    </div>
+    <div class="row-item">
+      <div class="label-col"><div class="eyebrow">Role / lede</div><div class="h-mono" style="margin-top:4px;">Manrope 500 · -0.04em</div></div>
+      <div class="specimen h-role">Software engineer with 6 years of experience</div>
+    </div>
+    <div class="row-item">
+      <div class="label-col"><div class="eyebrow">Body</div><div class="h-mono" style="margin-top:4px;">Manrope 400 · 1.7 line-height</div></div>
+      <div class="specimen h-body">Currently completing an M.S. in Computer Science at Arizona State University.</div>
+    </div>
+    <div class="row-item">
+      <div class="label-col"><div class="eyebrow">Mono label</div><div class="h-mono" style="margin-top:4px;">Plex Mono 500 · 0.18em caps</div></div>
+      <div class="specimen h-mono">CURRENT TRAJECTORY</div>
+    </div>
+  </div>
+</body>
+</html>

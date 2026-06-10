@@ -6,21 +6,6 @@ import { RESUME } from '../../../core/data/resume-data';
 describe('ContactComponent', () => {
   let component: ContactComponent;
   let fixture: ComponentFixture<ContactComponent>;
-  const linkedInWindow = window as Window & {
-    IN?: {
-      parse?: (element?: Element) => void;
-    };
-  };
-
-  beforeAll(() => {
-    linkedInWindow.IN = {
-      parse: () => undefined
-    };
-  });
-
-  afterAll(() => {
-    delete linkedInWindow.IN;
-  });
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -40,26 +25,41 @@ describe('ContactComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('renders the LinkedIn badge and keeps non-LinkedIn links in elsewhere', () => {
+  it('renders the email centerpiece as a mailto link with a copy button', () => {
     const element: HTMLElement = fixture.nativeElement;
-    const badge = element.querySelector('.linkedin-badge');
-    const badgeLink = element.querySelector('.linkedin-fallback-card') as HTMLAnchorElement | null;
-    const elsewhereLinks = Array.from(element.querySelectorAll<HTMLAnchorElement>('.link-list a')).map(
-      (link) => link.textContent?.trim()
-    );
+    const emailLink = element.querySelector<HTMLAnchorElement>('.email-link');
+    const copyButton = element.querySelector<HTMLButtonElement>('.copy-pill');
 
-    expect(badge).not.toBeNull();
-    expect(badge?.getAttribute('data-vanity')).toBe('vikas-keshavamurthy-b027b1165');
-    expect(badgeLink?.getAttribute('href')).toBe(
-      'https://www.linkedin.com/in/vikas-keshavamurthy-b027b1165?trk=profile-badge'
-    );
-    expect(badgeLink?.textContent).toContain('Vikas Keshavamurthy');
-    expect(elsewhereLinks).toContain('GitHub');
-    expect(elsewhereLinks).toContain('Resume PDF');
-    expect(elsewhereLinks).not.toContain('LinkedIn');
+    expect(emailLink?.getAttribute('href')).toBe(`mailto:${RESUME.contact.email}`);
+    expect(emailLink?.textContent).toContain(RESUME.contact.email);
+    expect(copyButton?.textContent?.trim()).toBe('Copy email');
   });
 
-  it('omits the badge cleanly when the LinkedIn link is missing', async () => {
+  it('renders LinkedIn as the primary action and the rest as ghost actions', () => {
+    const element: HTMLElement = fixture.nativeElement;
+    const primary = element.querySelector<HTMLAnchorElement>('.action-row .btn.primary');
+    const ghosts = Array.from(
+      element.querySelectorAll<HTMLAnchorElement>('.action-row .btn.ghost')
+    ).map((link) => link.textContent?.trim());
+
+    expect(primary?.textContent?.trim()).toBe('LinkedIn');
+    expect(primary?.getAttribute('href')).toBe(
+      'https://linkedin.com/in/vikas-keshavamurthy-b027b1165'
+    );
+    expect(ghosts).toContain('GitHub');
+    expect(ghosts).toContain('Resume PDF');
+    expect(ghosts).not.toContain('LinkedIn');
+  });
+
+  it('does not load any third-party LinkedIn badge markup', () => {
+    const element: HTMLElement = fixture.nativeElement;
+
+    expect(element.querySelector('.linkedin-badge')).toBeNull();
+    expect(element.querySelector('.LI-profile-badge')).toBeNull();
+    expect(document.getElementById('linkedin-profile-badge-script')).toBeNull();
+  });
+
+  it('omits the primary action cleanly when the LinkedIn link is missing', async () => {
     fixture.componentRef.setInput(
       'links',
       RESUME.links.filter((link) => link.label !== 'LinkedIn')
@@ -68,12 +68,29 @@ describe('ContactComponent', () => {
     await fixture.whenStable();
 
     const element: HTMLElement = fixture.nativeElement;
-    const elsewhereLinks = Array.from(element.querySelectorAll<HTMLAnchorElement>('.link-list a')).map(
-      (link) => link.textContent?.trim()
-    );
+    const ghosts = Array.from(
+      element.querySelectorAll<HTMLAnchorElement>('.action-row .btn.ghost')
+    ).map((link) => link.textContent?.trim());
 
-    expect(element.querySelector('.linkedin')).toBeNull();
-    expect(elsewhereLinks).toContain('GitHub');
-    expect(elsewhereLinks).toContain('Resume PDF');
+    expect(element.querySelector('.action-row .btn.primary')).toBeNull();
+    expect(ghosts).toContain('GitHub');
+    expect(ghosts).toContain('Resume PDF');
+  });
+
+  it('copies the email and shows a temporary confirmation', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, 'clipboard', {
+      value: { writeText },
+      configurable: true
+    });
+
+    await component.copyEmail();
+    fixture.detectChanges();
+
+    const copyButton = fixture.nativeElement.querySelector('.copy-pill') as HTMLButtonElement;
+
+    expect(writeText).toHaveBeenCalledWith(RESUME.contact.email);
+    expect(component.copied()).toBe(true);
+    expect(copyButton.textContent?.trim()).toBe('Copied');
   });
 });

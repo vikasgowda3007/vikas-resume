@@ -1,16 +1,21 @@
 <section id="projects" class="section">
-  <div class="section-inner projects-shell">
-    <header class="section-heading">
-      <p class="section-label">Selected projects</p>
+  <div class="section-inner">
+    <header class="section-heading" appReveal>
+      <p class="section-label">03 — Selected projects</p>
       <h2>Projects that show range, curiosity, and product taste.</h2>
       <p>
-        From AI-assisted tooling to coursework and public-facing Angular work, each project reflects a slightly different engineering mode.
+        From AI-assisted tooling to embedded coursework and public-facing Angular work, each
+        project reflects a slightly different engineering mode.
       </p>
     </header>
 
     <div class="project-list">
-      <article *ngFor="let project of projects; let i = index" class="project-feature">
-        <div class="project-index">0{{ i + 1 }}</div>
+      <article
+        *ngFor="let project of projects; let i = index"
+        class="project-row"
+        [appReveal]="90 * i"
+      >
+        <p class="project-index" aria-hidden="true">0{{ i + 1 }}</p>
 
         <div class="project-copy">
           <p class="project-meta">
@@ -21,14 +26,12 @@
           <p class="description">{{ project.description }}</p>
         </div>
 
-        <div class="project-panel">
-          <div class="project-panel-inner">
-            <p class="panel-label">Focus</p>
-            <ul>
-              <li *ngFor="let tech of project.technologies?.slice(0, 4)">{{ tech }}</li>
-            </ul>
-          </div>
-        </div>
+        <aside class="project-panel glass-card" *ngIf="project.technologies?.length">
+          <p class="panel-label">Focus</p>
+          <ul>
+            <li *ngFor="let tech of project.technologies">{{ tech }}</li>
+          </ul>
+        </aside>
       </article>
     </div>
   </div>

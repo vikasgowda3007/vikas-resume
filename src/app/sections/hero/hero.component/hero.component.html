@@ -7,39 +7,28 @@
 
   <div class="section-inner hero-inner">
     <div class="hero-copy">
-      <p class="hero-overline">{{ resume.location }} · {{ resume.contact.authorization }}</p>
+      <p class="hero-overline">
+        <span class="status-dot" aria-hidden="true"></span>
+        Open to internships — {{ resume.location }} · {{ resume.contact.authorization }}
+      </p>
 
       <h1 class="hero-title">
-        <span class="hero-title-name">
-          <span class="hero-name-line">{{ primaryName }}</span>
-          <span *ngIf="secondaryName" class="hero-name-line hero-name-line-secondary">
-            {{ secondaryName }}
-          </span>
-        </span>
-        <span class="hero-title-line">Secure products. Polished interfaces. Grounded engineering.</span>
+        <span class="hero-name-line">{{ primaryName }}</span>&ngsp;<span
+          class="hero-name-line hero-name-accent"
+          >{{ secondaryName }}</span
+        >
       </h1>
 
-      <p class="hero-role">
-        {{ resume.role }}
-      </p>
+      <p class="hero-tagline">Secure products. Polished interfaces. Grounded engineering.</p>
 
       <p class="hero-summary">
         {{ resume.summary }}
       </p>
 
       <div class="hero-actions">
-        <a
-          class="btn primary"
-          href="mailto:{{ resume.contact.email }}"
-        >
-          Email Vikas
-        </a>
+        <a class="btn primary" href="mailto:{{ resume.contact.email }}"> Email Vikas </a>
 
-        <a
-          *ngFor="let link of actionLinks"
-          class="btn ghost"
-          [href]="link.href"
-        >
+        <a *ngFor="let link of actionLinks" class="btn ghost" [href]="link.href">
           {{ link.label }}
         </a>
       </div>
@@ -53,6 +42,7 @@
 
     <div class="hero-stage" [class.hero-stage-fallback]="!resume.portrait">
       <div class="portrait-stage" *ngIf="resume.portrait as portrait">
+        <div class="portrait-halo" aria-hidden="true"></div>
         <div class="portrait-orbit" aria-hidden="true"></div>
 
         <picture class="portrait-frame">
@@ -77,7 +67,31 @@
             decoding="async"
           />
         </picture>
+
+        <div class="portrait-badge" aria-hidden="true">
+          <span class="badge-kicker">Currently</span>
+          <span class="badge-line">M.S. CS · Arizona State</span>
+        </div>
       </div>
+    </div>
+  </div>
+
+  <div class="section-inner hero-metrics-wrap" *ngIf="resume.metrics?.length">
+    <dl class="hero-metrics">
+      <div class="metric" *ngFor="let metric of resume.metrics">
+        <dt class="metric-value">{{ metric.value }}</dt>
+        <dd class="metric-copy">
+          <span class="metric-label">{{ metric.label }}</span>
+          <span class="metric-detail">{{ metric.detail }}</span>
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  <div class="hero-marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item" *ngFor="let item of marqueeItems">{{ item }}</span>
+      <span class="marquee-item" *ngFor="let item of marqueeItems">{{ item }}</span>
     </div>
   </div>
 </section>

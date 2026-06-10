@@ -2,24 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Vikas Keshavamurthy | Software Engineer</title>
+  <title>Vikas Keshavamurthy | Software Engineer Portfolio</title>
   <base href="/" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Vikas Keshavamurthy" />
+  <meta name="application-name" content="Vikas Keshavamurthy Portfolio" />
+  <meta name="apple-mobile-web-app-title" content="Vikas Portfolio" />
+  <meta
+    name="keywords"
+    content="Vikas Keshavamurthy, software engineer, software engineering intern, Angular developer, Java developer, Node.js developer, Python, Arizona State University, portfolio"
+  />
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  />
   <meta
     name="description"
     content="Vikas Keshavamurthy is a software engineer with 6 years of experience across data security and telecommunications, currently pursuing an M.S. in Computer Science at Arizona State University."
   />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260405b" />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20260405b" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=20260405b" />
-  <link rel="shortcut icon" href="favicon.ico?v=20260405b" />
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260405b" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
+  <link rel="canonical" href="https://vikas-keshavamurthy.vercel.app/" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260405c" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20260405c" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=20260405c" />
+  <link rel="shortcut icon" href="favicon.ico?v=20260405c" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260405c" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Vikas Keshavamurthy Portfolio" />
+  <meta property="og:title" content="Vikas Keshavamurthy | Software Engineer Portfolio" />
+  <meta
+    property="og:description"
+    content="Software engineer with 6 years across data security and telecommunications, currently pursuing an M.S. in Computer Science at Arizona State University."
   />
+  <meta property="og:url" content="https://vikas-keshavamurthy.vercel.app/" />
+  <meta property="og:image" content="https://vikas-keshavamurthy.vercel.app/og-card.png?v=20260405a" />
+  <meta property="og:image:secure_url" content="https://vikas-keshavamurthy.vercel.app/og-card.png?v=20260405a" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta
+    property="og:image:alt"
+    content="Social preview card for Vikas Keshavamurthy, software engineer pursuing an M.S. in Computer Science at Arizona State University."
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vikas Keshavamurthy | Software Engineer Portfolio" />
+  <meta
+    name="twitter:description"
+    content="Software engineer with 6 years across data security and telecommunications, currently pursuing an M.S. in Computer Science at Arizona State University."
+  />
+  <meta name="twitter:image" content="https://vikas-keshavamurthy.vercel.app/og-card.png?v=20260405a" />
+  <!-- Self-hosted fonts: preload the weights used above the fold -->
+  <link rel="preload" href="fonts/Manrope-800.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/Manrope-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/Manrope-600.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/IBMPlexMono-500.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- Inline theme init so the first paint matches the user's saved or system preference -->
   <script>
@@ -34,7 +70,7 @@
         root.classList.toggle('dark', shouldUseDark);
         root.classList.toggle('light', stored === 'light');
         root.style.colorScheme = shouldUseDark ? 'dark' : 'light';
-        themeColorMeta?.setAttribute('content', shouldUseDark ? '#050816' : '#f8fbff');
+        themeColorMeta?.setAttribute('content', shouldUseDark ? '#04070f' : '#f8fbff');
       } catch (e) {
         /* ignore errors (e.g., private mode) */
       }
@@ -51,8 +87,16 @@
 
     :root.dark {
       --text-color: #f5f7fb;
-      --background-color: #050816;
+      --background-color: #04070f;
       color-scheme: dark;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not(.light):not(.dark) {
+        --text-color: #f5f7fb;
+        --background-color: #04070f;
+        color-scheme: dark;
+      }
     }
 
     :root.light {
@@ -71,6 +115,44 @@
   </style>
 
   <meta name="theme-color" content="#f8fbff">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Vikas Keshavamurthy",
+      "url": "https://vikas-keshavamurthy.vercel.app/",
+      "image": "https://vikas-keshavamurthy.vercel.app/assets/portraits/vikas-hero-1120.jpg",
+      "jobTitle": "Software Engineer",
+      "description": "Software engineer with 6 years across data security and telecommunications, currently pursuing an M.S. in Computer Science at Arizona State University.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tempe",
+        "addressRegion": "AZ",
+        "addressCountry": "US"
+      },
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "Arizona State University"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "R.V. College of Engineering"
+      },
+      "sameAs": [
+        "https://linkedin.com/in/vikas-keshavamurthy-b027b1165",
+        "https://github.com/vikasgowda3007"
+      ],
+      "knowsAbout": [
+        "Angular",
+        "Java",
+        "Node.js",
+        "Python",
+        "Data security",
+        "Telecommunications",
+        "AI-assisted workflow tooling"
+      ]
+    }
+  </script>
 </head>
 <body>
   <app-root></app-root>

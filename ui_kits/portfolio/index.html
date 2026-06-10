@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Vikas Portfolio · UI Kit</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="sections.css" />
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
+<script>
+  (function(){ try {
+    const root = document.documentElement;
+    const stored = localStorage.getItem('vikas-theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const dark = stored === 'dark' || (stored === null && prefersDark);
+    root.classList.toggle('dark', dark);
+    root.classList.toggle('light', !dark);
+  } catch(e){} })();
+</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="data.js"></script>
+<script type="text/babel" src="Header.jsx"></script>
+<script type="text/babel" src="Sections.jsx"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+  const { useState } = React;
+  const SECTIONS = [
+    { id: 'about', label: 'ABOUT' },
+    { id: 'experience', label: 'EXPERIENCE' },
+    { id: 'projects', label: 'PROJECTS' },
+    { id: 'skills', label: 'SKILLS' },
+    { id: 'contact', label: 'CONTACT' }
+  ];
+
+  function App() {
+    const [active, setActive] = useState('about');
+    const [selectedProject, setSelectedProject] = useState(0);
+
+    const onNav = (id) => {
+      setActive(id);
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    return (
+      <div className="app-shell">
+        <Navbar name={RESUME.name} sections={SECTIONS} activeId={active} onNav={onNav} />
+        <main>
+          <Hero resume={RESUME} />
+          <About resume={RESUME} />
+          <Experience items={RESUME.experience} />
+          <Projects projects={RESUME.projects} onSelect={setSelectedProject} selectedIdx={selectedProject} />
+          <Skills skills={RESUME.skills} />
+          <Contact contact={RESUME.contact} links={RESUME.links} />
+        </main>
+        <footer className="app-footer">
+          <p>{RESUME.name} · Tempe, AZ · F-1 student on CPT</p>
+          <p>Angular-first full-stack engineer building secure products with a product eye.</p>
+        </footer>
+      </div>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

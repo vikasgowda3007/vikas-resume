@@ -28,8 +28,13 @@ import { Resume } from './core/models/resume/resume.module';
 })
 export class App {
   resume: Resume;
+  readonly year = new Date().getFullYear();
 
   constructor(private resumeService: ResumeService) {
     this.resume = this.resumeService.getResume();
+  }
+
+  scrollToTop(): void {
+    document.getElementById('top')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }

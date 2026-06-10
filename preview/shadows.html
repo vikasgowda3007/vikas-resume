@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_preview.css" />
+<style>
+  .shadows { display:flex; gap:24px; flex-wrap:wrap; padding: 20px 4px; }
+  .s { width: 130px; height: 100px; border-radius: 16px; background: #fff; display:flex; align-items:flex-end; justify-content:center; padding: 8px; }
+  .s span { font-family: var(--font-mono); font-size: 10px; color: var(--fg-3); text-align:center; line-height:1.4; }
+  .s.s1 { box-shadow: 0 12px 26px rgba(15,23,42,0.08); }
+  .s.s2 { box-shadow: 0 20px 40px rgba(15,23,42,0.08); }
+  .s.s3 { box-shadow: 0 28px 70px rgba(15,23,42,0.18); }
+  .s.s4 { box-shadow: inset 0 1px 0 rgba(255,255,255,0.55), 0 12px 26px rgba(15,23,42,0.08); border:1px solid rgba(255,255,255,0.8); background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.6)); }
+  .s.s5 { box-shadow: 0 18px 36px rgba(22,119,255,0.24); background: linear-gradient(180deg,#1677ff,#0f5fd8); }
+  .s.s5 span { color: rgba(255,255,255,.85); }
+</style>
+</head>
+<body class="card">
+  <p class="eyebrow" style="margin-bottom:8px;">Shadow system — slate-tinted, never black</p>
+  <div class="shadows">
+    <div class="s s1"><span>btn rest<br/>0 12 26 · .08</span></div>
+    <div class="s s2"><span>card<br/>0 20 40 · .08</span></div>
+    <div class="s s3"><span>portrait<br/>0 28 70 · .18</span></div>
+    <div class="s s4"><span>glass + inset<br/>1px white top</span></div>
+    <div class="s s5"><span>cta hover<br/>0 18 36 · accent .24</span></div>
+  </div>
+</body>
+</html>

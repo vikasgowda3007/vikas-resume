@@ -1,0 +1,69 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pageBg" x1="140" y1="28" x2="1036" y2="612" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FBFF"/>
+      <stop offset="1" stop-color="#DCE8FF"/>
+    </linearGradient>
+    <radialGradient id="blueGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(315 196) rotate(68.945) scale(276.726 415.043)">
+      <stop stop-color="#8EC4FF" stop-opacity="0.54"/>
+      <stop offset="1" stop-color="#8EC4FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="amberGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1008 520) rotate(-151.699) scale(302.195 292.644)">
+      <stop stop-color="#E8C081" stop-opacity="0.58"/>
+      <stop offset="1" stop-color="#E8C081" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="markBg" x1="0" y1="0" x2="140" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B142A"/>
+      <stop offset="1" stop-color="#173166"/>
+    </linearGradient>
+    <radialGradient id="markGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(102 38) rotate(130.236) scale(57.1516)">
+      <stop stop-color="#8DC5FF" stop-opacity="0.94"/>
+      <stop offset="1" stop-color="#8DC5FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="markStroke" x1="34" y1="31" x2="109" y2="113" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FBFF"/>
+      <stop offset="1" stop-color="#B7D8FF"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#pageBg)"/>
+  <circle cx="318" cy="192" r="214" fill="url(#blueGlow)"/>
+  <circle cx="1002" cy="526" r="188" fill="url(#amberGlow)"/>
+
+  <rect x="46" y="46" width="1108" height="538" rx="44" fill="#F8FBFF" fill-opacity="0.72"/>
+  <rect x="46.5" y="46.5" width="1107" height="537" rx="43.5" stroke="#D4DDF0"/>
+
+  <g transform="translate(92 102)">
+    <rect width="140" height="140" rx="42" fill="url(#markBg)"/>
+    <rect x="1" y="1" width="138" height="138" rx="41" stroke="#FFFFFF" stroke-opacity="0.14"/>
+    <circle cx="102" cy="38" r="40" fill="url(#markGlow)"/>
+    <path d="M32 40L52 108L72 40" stroke="url(#markStroke)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M84 40V110" stroke="url(#markStroke)" stroke-width="14" stroke-linecap="round"/>
+    <path d="M112 42L84 73L112 108" stroke="url(#markStroke)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="116" cy="34" r="7" fill="#74B3FF"/>
+  </g>
+
+  <text x="274" y="150" fill="#607494" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="0.34em">SOFTWARE ENGINEER PORTFOLIO</text>
+  <text x="92" y="322" fill="#0D1934" font-family="Arial, Helvetica, sans-serif" font-size="74" font-weight="700">Vikas Keshavamurthy</text>
+  <text x="92" y="388" fill="#43526A" font-family="Arial, Helvetica, sans-serif" font-size="33" font-weight="400">6 years across data security and telecommunications</text>
+  <text x="92" y="442" fill="#43526A" font-family="Arial, Helvetica, sans-serif" font-size="33" font-weight="400">Currently pursuing an M.S. in Computer Science at Arizona State University</text>
+
+  <g transform="translate(92 490)">
+    <rect width="150" height="48" rx="24" fill="#EEF3FB"/>
+    <text x="75" y="31" text-anchor="middle" fill="#26344B" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="600">Angular</text>
+  </g>
+  <g transform="translate(258 490)">
+    <rect width="118" height="48" rx="24" fill="#EEF3FB"/>
+    <text x="59" y="31" text-anchor="middle" fill="#26344B" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="600">Java</text>
+  </g>
+  <g transform="translate(392 490)">
+    <rect width="145" height="48" rx="24" fill="#EEF3FB"/>
+    <text x="72.5" y="31" text-anchor="middle" fill="#26344B" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="600">Node.js</text>
+  </g>
+  <g transform="translate(553 490)">
+    <rect width="132" height="48" rx="24" fill="#EEF3FB"/>
+    <text x="66" y="31" text-anchor="middle" fill="#26344B" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="600">Python</text>
+  </g>
+
+  <text x="92" y="570" fill="#607494" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600">vikas-keshavamurthy.vercel.app</text>
+</svg>

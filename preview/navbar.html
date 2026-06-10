@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_preview.css" />
+<style>
+  .nav-inner { padding: 0.8rem 1rem 0.8rem 1.2rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; border-radius: 999px; background: rgba(255,255,255,0.9); border:1px solid var(--line-color); box-shadow: 0 12px 32px rgba(15,23,42,0.10); backdrop-filter: blur(24px) saturate(160%); }
+  .nav-logo { display:flex; align-items:center; gap:0.8rem; }
+  .brand-mark { width: 2.1rem; height: 2.1rem; border-radius: 0.8rem; filter: drop-shadow(0 10px 18px rgba(76,144,255,0.18)); }
+  .brand-block { display:flex; flex-direction:column; gap:0.08rem; }
+  .name { font-weight: 700; font-size: 0.95rem; letter-spacing: -0.02em; color: var(--fg-1); }
+  .meta { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-3); }
+  .nav-links { display:flex; align-items:center; gap: 0.35rem; }
+  .nav-link { border:none; background:none; cursor:pointer; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.6rem 0.75rem; border-radius: 999px; color: var(--fg-2); }
+  .nav-link.active { background: rgba(22,119,255,0.12); color: var(--fg-1); }
+</style>
+</head>
+<body class="card">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img class="brand-mark" src="../assets/favicon.svg" alt="" />
+      <div class="brand-block">
+        <span class="name">Vikas Keshavamurthy</span>
+        <span class="meta">SOFTWARE ENGINEER</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <button class="nav-link">ABOUT</button>
+      <button class="nav-link">EXPERIENCE</button>
+      <button class="nav-link active">PROJECTS</button>
+      <button class="nav-link">SKILLS</button>
+      <button class="nav-link">CONTACT</button>
+    </div>
+  </div>
+</body>
+</html>

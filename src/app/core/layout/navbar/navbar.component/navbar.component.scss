@@ -1,112 +1,151 @@
+.nav-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 60;
+  pointer-events: none;
+
+  span {
+    display: block;
+    height: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-strong));
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+}
+
 .nav {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 50;
   padding: 1rem 1rem 0;
 }
 
 .nav-inner {
-  max-width: calc(var(--page-width) + 2rem);
+  max-width: var(--page-width);
   margin: 0 auto;
-  padding: 0.8rem 1rem 0.8rem 1.2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--surface-color) 90%, transparent);
-  border: 1px solid var(--line-color);
-  box-shadow: 0 12px 32px var(--shadow-color);
+  gap: 1rem;
+  padding: 0.55rem 0.7rem 0.55rem 0.9rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--glass-edge);
+  background: color-mix(in srgb, var(--surface-color) 92%, transparent);
   backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: var(--card-shadow), inset 0 1px 0 var(--glass-inner);
 }
 
 .nav-logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
-  border: none;
-  background: none;
-  padding: 0;
+  gap: 0.7rem;
+  border: 0;
+  background: transparent;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-pill);
   cursor: pointer;
-  font: inherit;
+  text-align: left;
+  color: inherit;
 }
 
 .brand-mark {
   width: 2.1rem;
   height: 2.1rem;
-  display: block;
-  flex-shrink: 0;
-  border-radius: 0.8rem;
+  border-radius: var(--radius-chip);
   filter: drop-shadow(0 10px 18px rgba(76, 144, 255, 0.18));
 }
 
 .brand-block {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0.08rem;
-}
+  line-height: 1.15;
 
-.nav-logo .name {
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: -0.02em;
-}
+  .name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--fg-1);
+    white-space: nowrap;
+  }
 
-.nav-logo .meta {
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted-color);
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-color);
+  }
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  gap: 0.15rem;
 }
 
 .nav-link {
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  padding: 0.6rem 0.75rem;
-  border-radius: 999px;
+  border: 0;
+  background: transparent;
   color: var(--muted-color-strong);
-}
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
 
-.nav-link:hover {
-  background: var(--accent-soft);
-  transform: translateY(-1px);
-  color: var(--text-color);
-}
-
-@media (max-width: 768px) {
-  .nav {
-    padding-inline: 0.75rem;
+  &:hover {
+    background: var(--accent-soft);
+    color: var(--fg-1);
+    transform: translateY(-1px);
   }
 
-  .nav-inner {
-    border-radius: 1.5rem;
-    padding: 0.85rem 0.95rem;
-    align-items: flex-start;
-    flex-direction: column;
+  &.active {
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+  }
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 auto;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line-color);
+  background: color-mix(in srgb, var(--surface-color) 90%, transparent);
+  color: var(--muted-color-strong);
+  cursor: pointer;
+
+  svg {
+    width: 1.15rem;
+    height: 1.15rem;
   }
 
+  &:hover {
+    color: var(--accent-ink);
+    border-color: var(--line-strong);
+    background: var(--surface-strong);
+    transform: translateY(-1px);
+  }
+}
+
+@media (max-width: 880px) {
   .nav-links {
-    width: 100%;
-    gap: 0.3rem;
-    justify-content: flex-start;
+    display: none;
   }
+}
 
-  .nav-link {
-    padding: 0.45rem 0.6rem;
+@media (max-width: 480px) {
+  .brand-block .name {
+    font-size: 0.85rem;
   }
 }

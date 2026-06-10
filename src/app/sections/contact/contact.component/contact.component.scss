@@ -1,264 +1,149 @@
-.contact-inner {
+/* Contact — one centered glass stage; the email address is the headline. */
+
+.contact-stage {
   position: relative;
-  z-index: 1;
+  overflow: hidden;
   text-align: center;
+  padding: clamp(2.5rem, 6vw, 4.5rem);
+  border-radius: var(--radius-stage);
+  border: 1px solid var(--glass-edge);
+  background: var(--glass-fill), var(--surface-color);
+  box-shadow: var(--card-shadow), inset 0 1px 0 var(--glass-inner);
 }
 
-.contact {
-  color: #f8fbff;
-  padding-bottom: clamp(5rem, 8vw, 7rem);
-}
-
-.contact-background {
+/* Quiet accent glow seeping in from the top edge. */
+.contact-stage::before {
+  content: '';
   position: absolute;
-  inset: 8% 1rem 0;
-  border-radius: 2.5rem 2.5rem 0 0;
-  background:
-    radial-gradient(circle at top right, rgba(116, 179, 255, 0.28), transparent 22%),
-    radial-gradient(circle at left 20%, rgba(22, 119, 255, 0.18), transparent 18%),
-    linear-gradient(180deg, #071020 0%, #050816 100%);
-}
-
-.section-heading.center {
-  margin: 0 auto 2.5rem;
-  max-width: 42rem;
-}
-
-.section-heading.center .section-label {
-  color: rgba(255, 255, 255, 0.58);
-}
-
-.section-heading.center h2 {
-  font-size: clamp(2rem, 3.4vw, 3.4rem);
-  line-height: 1.03;
-  letter-spacing: -0.06em;
-  margin-bottom: 0.85rem;
-}
-
-.section-heading.center p:last-child {
-  color: rgba(226, 232, 240, 0.76);
-  line-height: 1.75;
-}
-
-.contact-card {
-  margin: 0 auto;
-  max-width: 44rem;
-  padding: 2rem;
-  border-radius: 2rem;
-  background:
-    linear-gradient(180deg, rgba(15, 23, 42, 0.28), rgba(8, 14, 30, 0.5)),
-    rgba(8, 14, 30, 0.68);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow:
-    0 26px 60px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  display: grid;
-  gap: 1.5rem;
-}
-
-.primary,
-.linkedin,
-.links {
-  display: grid;
-  justify-items: center;
-}
-
-.label {
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.72rem;
-  color: rgba(226, 232, 240, 0.52);
-  margin-bottom: 0.7rem;
-  font-family: var(--font-mono);
-}
-
-.email {
-  font-size: clamp(1.45rem, 2.2vw, 2rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  text-decoration: none;
-  color: #f8fbff;
-}
-
-.email:hover {
-  color: var(--accent-strong);
-}
-
-.phone,
-.location,
-.authorization {
-  margin-top: 0.6rem;
-  color: rgba(226, 232, 240, 0.78);
-}
-
-.linkedin {
-  gap: 0.85rem;
-  padding: 1.1rem;
-  border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
-    rgba(255, 255, 255, 0.02);
-}
-
-.linkedin-badge-stage {
-  position: relative;
-  isolation: isolate;
-  width: min(100%, 28rem);
-  min-height: 15.5rem;
-  display: grid;
-  place-items: center;
-}
-
-.linkedin-badge-stage--official {
-  min-height: 0;
-}
-
-.linkedin-badge {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 100%;
-  min-height: 15.5rem;
+  inset: 0 0 auto;
+  height: clamp(7rem, 14vw, 11rem);
+  background: radial-gradient(60% 100% at 50% 0%, var(--accent-soft), transparent 75%);
   pointer-events: none;
 }
 
-.linkedin-badge iframe {
-  pointer-events: auto;
-  border-radius: 1rem;
-  overflow: hidden;
-}
-
-.linkedin-badge-anchor {
+.contact-stage::after {
+  content: '';
   position: absolute;
-  width: 1px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(34rem, 70%);
   height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  white-space: nowrap;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
 }
 
-.linkedin-fallback-card {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  display: grid;
-  align-content: center;
-  justify-items: center;
-  gap: 0.8rem;
-  padding: 1.6rem;
-  border-radius: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background:
-    radial-gradient(circle at top left, rgba(116, 179, 255, 0.12), transparent 30%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
-    rgba(12, 18, 34, 0.78);
-  text-decoration: none;
-  color: #f8fbff;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 18px 44px rgba(0, 0, 0, 0.18);
+.contact-stage > * {
+  position: relative;
 }
 
-.linkedin-fallback-card:hover {
-  transform: translateY(-1px);
-  background:
-    radial-gradient(circle at top left, rgba(116, 179, 255, 0.16), transparent 32%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
-    rgba(12, 18, 34, 0.84);
+.section-heading {
+  margin-bottom: clamp(2.2rem, 4.5vw, 3.2rem);
 }
 
-.linkedin-fallback-kicker {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(226, 232, 240, 0.54);
-}
-
-.linkedin-fallback-name {
-  font-size: clamp(1.15rem, 2vw, 1.5rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-}
-
-.linkedin-fallback-cta {
-  display: inline-flex;
-  align-items: center;
+.section-heading .section-label {
   justify-content: center;
-  min-height: 2.85rem;
-  padding: 0.75rem 1.15rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.05);
-  font-size: 0.92rem;
-  font-weight: 600;
 }
 
-.linkedin-badge-stage--official .linkedin-fallback-card {
-  display: none;
+.section-heading .section-label::after {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: linear-gradient(270deg, var(--accent-color), transparent);
 }
 
-.linkedin-badge-stage:has(.linkedin-badge iframe) {
-  min-height: 0;
+.section-heading h2 {
+  margin-inline: auto;
 }
 
-.linkedin-badge-stage:has(.linkedin-badge iframe) .linkedin-badge {
-  pointer-events: auto;
-  z-index: 4;
-  min-height: 0;
+.section-heading > p:not(.section-label) {
+  margin-inline: auto;
 }
 
-.linkedin-badge-stage:has(.linkedin-badge iframe) .linkedin-fallback-card {
-  display: none;
+/* Email centerpiece. */
+.email-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+  margin-bottom: clamp(1.9rem, 4vw, 2.6rem);
 }
 
-.links .link-list {
+.email-link {
+  display: inline-block;
+  font-size: clamp(1.6rem, 5vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  text-decoration: none;
+  color: var(--fg-1);
+  overflow-wrap: anywhere;
+}
+
+.email-link span {
+  display: inline-block;
+  padding-bottom: 0.18em;
+  background-image: linear-gradient(90deg, var(--accent-color), var(--accent-strong));
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0% 2px;
+  transition: background-size 420ms var(--ease-out);
+}
+
+.email-link:hover span,
+.email-link:focus-visible span {
+  background-size: 100% 2px;
+}
+
+.email-link:hover {
+  color: var(--accent-ink);
+}
+
+.copy-pill {
+  appearance: none;
+  cursor: pointer;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line-strong);
+  background: color-mix(in srgb, var(--surface-color) 92%, transparent);
+  padding: 0.6rem 1.3rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  font-weight: 500;
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  color: var(--muted-color-strong);
+}
+
+.copy-pill:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-ink);
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+}
+
+.copy-pill.is-copied {
+  border-color: var(--accent-color);
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+
+/* Meta + actions. */
+.meta-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
+  margin-bottom: clamp(2.1rem, 4vw, 2.8rem);
 }
 
-.links a {
-  border-radius: 999px;
-  padding: 0.65rem 1rem;
-  font-size: 0.9rem;
-  text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
-  color: #f8fbff;
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
 }
 
-.links a:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-1px);
-}
-
-@media (max-width: 768px) {
-  .contact-background {
-    inset-inline: 0.5rem;
-    border-radius: 2rem 2rem 0 0;
-  }
-
-  .contact-card {
-    padding: 1.5rem;
-  }
-
-  .linkedin {
-    padding: 1rem;
-  }
-
-  .linkedin-badge-stage,
-  .linkedin-badge {
-    min-height: 14.5rem;
-  }
-
-  .linkedin-fallback-card {
-    padding: 1.35rem 1.15rem;
+@media (max-width: 640px) {
+  .action-row .btn {
+    flex: 1 1 100%;
   }
 }

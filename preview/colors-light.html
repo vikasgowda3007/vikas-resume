@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_preview.css" />
+<style>
+  .grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; }
+  .swatch-chip.fg1 { background: #0f172a; }
+  .swatch-chip.fg2 { background: #334155; }
+  .swatch-chip.fg3 { background: #64748b; }
+  .swatch-chip.bg { background: #f4f7fb; }
+  .swatch-chip.surface-strong { background: #ffffff; }
+  .swatch-chip.surface-muted { background: #edf2f8; }
+  .swatch-chip.line { background: rgba(15,23,42,0.08); }
+  .swatch-chip.shadow { background: rgba(15,23,42,0.10); }
+</style>
+</head>
+<body class="card">
+  <p class="eyebrow" style="margin-bottom:14px;">Light theme · neutrals</p>
+  <div class="grid">
+    <div class="swatch"><div class="swatch-chip fg1"></div><div class="swatch-name">FG 1</div><div class="swatch-token">#0F172A · text</div></div>
+    <div class="swatch"><div class="swatch-chip fg2"></div><div class="swatch-name">FG 2</div><div class="swatch-token">#334155 · body</div></div>
+    <div class="swatch"><div class="swatch-chip fg3"></div><div class="swatch-name">FG 3</div><div class="swatch-token">#64748B · muted</div></div>
+    <div class="swatch"><div class="swatch-chip bg"></div><div class="swatch-name">Background</div><div class="swatch-token">#F4F7FB</div></div>
+    <div class="swatch"><div class="swatch-chip surface-strong"></div><div class="swatch-name">Surface strong</div><div class="swatch-token">#FFFFFF · cards</div></div>
+    <div class="swatch"><div class="swatch-chip surface-muted"></div><div class="swatch-name">Surface muted</div><div class="swatch-token">#EDF2F8 · panels</div></div>
+    <div class="swatch"><div class="swatch-chip line"></div><div class="swatch-name">Line</div><div class="swatch-token">slate · 8% alpha</div></div>
+    <div class="swatch"><div class="swatch-chip shadow"></div><div class="swatch-name">Shadow tint</div><div class="swatch-token">slate · 10% alpha</div></div>
+  </div>
+</body>
+</html>
