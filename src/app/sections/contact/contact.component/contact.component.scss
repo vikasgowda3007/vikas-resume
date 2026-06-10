@@ -1,149 +1,127 @@
-/* Contact — one centered glass stage; the email address is the headline. */
+/* Contact — the email address is the section, set at display size with a
+   drawn underline; a looping arrow path points the way. */
 
 .contact-stage {
   position: relative;
-  overflow: hidden;
   text-align: center;
-  padding: clamp(2.5rem, 6vw, 4.5rem);
-  border-radius: var(--radius-stage);
-  border: 1px solid var(--glass-edge);
-  background: var(--glass-fill), var(--surface-color);
-  box-shadow: var(--card-shadow), inset 0 1px 0 var(--glass-inner);
-}
-
-/* Quiet accent glow seeping in from the top edge. */
-.contact-stage::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto;
-  height: clamp(7rem, 14vw, 11rem);
-  background: radial-gradient(60% 100% at 50% 0%, var(--accent-soft), transparent 75%);
-  pointer-events: none;
-}
-
-.contact-stage::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(34rem, 70%);
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-}
-
-.contact-stage > * {
-  position: relative;
+  padding-block: clamp(1rem, 3vw, 2rem);
 }
 
 .section-heading {
-  margin-bottom: clamp(2.2rem, 4.5vw, 3.2rem);
-}
-
-.section-heading .section-label {
-  justify-content: center;
-}
-
-.section-heading .section-label::after {
-  content: '';
-  width: 2rem;
-  height: 1px;
-  background: linear-gradient(270deg, var(--accent-color), transparent);
-}
-
-.section-heading h2 {
-  margin-inline: auto;
-}
-
-.section-heading > p:not(.section-label) {
-  margin-inline: auto;
-}
-
-/* Email centerpiece. */
-.email-block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.4rem;
-  margin-bottom: clamp(1.9rem, 4vw, 2.6rem);
+
+  h2 {
+    max-width: none;
+  }
+
+  > p:not(.section-label) {
+    margin-inline: auto;
+  }
+}
+
+.contact-arrow {
+  width: clamp(7rem, 14vw, 11rem);
+  height: auto;
+  margin: 1.6rem auto 0;
+  display: block;
+  overflow: visible;
+
+  path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+/* ----- Email centerpiece ----- */
+
+.email-block {
+  margin-top: clamp(1.6rem, 4vw, 2.6rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
 }
 
 .email-link {
+  position: relative;
   display: inline-block;
-  font-size: clamp(1.6rem, 5vw, 3.4rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1.1;
   text-decoration: none;
-  color: var(--fg-1);
-  overflow-wrap: anywhere;
+  font-size: clamp(1.35rem, 6vw, 4.6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--ink);
+  word-break: break-all;
 }
 
-.email-link span {
-  display: inline-block;
-  padding-bottom: 0.18em;
-  background-image: linear-gradient(90deg, var(--accent-color), var(--accent-strong));
-  background-repeat: no-repeat;
-  background-position: left bottom;
-  background-size: 0% 2px;
-  transition: background-size 420ms var(--ease-out);
+.email-underline {
+  display: block;
+  width: 100%;
+  height: clamp(0.7rem, 1.6vw, 1.2rem);
+  margin-top: 0.2rem;
+  overflow: visible;
+
+  path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-dasharray: 700;
+    stroke-dashoffset: 700;
+    transition: stroke-dashoffset 700ms var(--ease-out);
+  }
 }
 
-.email-link:hover span,
-.email-link:focus-visible span {
-  background-size: 100% 2px;
-}
-
-.email-link:hover {
-  color: var(--accent-ink);
+.email-link:hover .email-underline path,
+.email-link:focus-visible .email-underline path {
+  stroke-dashoffset: 0;
 }
 
 .copy-pill {
   appearance: none;
-  cursor: pointer;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--line-strong);
-  background: color-mix(in srgb, var(--surface-color) 92%, transparent);
-  padding: 0.6rem 1.3rem;
+  border: var(--border-w) solid var(--border-ink);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink);
   font-family: var(--font-mono);
-  font-size: var(--text-mono);
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: var(--track-mono);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--muted-color-strong);
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
 }
 
 .copy-pill:hover {
-  border-color: var(--accent-color);
-  color: var(--accent-ink);
-  background: var(--accent-soft);
-  transform: translateY(-1px);
+  transform: translate(-0.12rem, -0.12rem);
+  box-shadow: 0.25rem 0.25rem 0 var(--accent);
 }
 
 .copy-pill.is-copied {
-  border-color: var(--accent-color);
-  background: var(--accent-soft);
-  color: var(--accent-ink);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
 }
 
-/* Meta + actions. */
+/* ----- Meta + actions ----- */
+
 .meta-row {
+  margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.6rem;
-  margin-bottom: clamp(2.1rem, 4vw, 2.8rem);
 }
 
 .action-row {
+  margin-top: 1.6rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.85rem;
-}
-
-@media (max-width: 640px) {
-  .action-row .btn {
-    flex: 1 1 100%;
-  }
+  gap: 0.8rem;
 }

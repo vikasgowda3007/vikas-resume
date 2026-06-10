@@ -24,13 +24,13 @@ describe('NavbarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('renders the branded mark instead of the legacy dot', () => {
+  it('renders the inline monogram mark', () => {
     const host = fixture.nativeElement as HTMLElement;
 
-    const brandMark = host.querySelector<HTMLImageElement>('.brand-mark');
+    const brandMark = host.querySelector('svg.brand-mark');
 
     expect(brandMark).not.toBeNull();
-    expect(brandMark?.getAttribute('src')).toContain('favicon.svg');
-    expect(host.querySelector('.dot')).toBeNull();
+    expect(brandMark?.querySelector('.brand-v')).not.toBeNull();
+    expect(brandMark?.querySelector('.brand-k')).not.toBeNull();
   });
 });

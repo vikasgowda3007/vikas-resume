@@ -24,20 +24,19 @@ describe('ProjectsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('renders technologies only in the focus panel', () => {
+  it('renders each project with its tech list as mono text', () => {
     const element: HTMLElement = fixture.nativeElement;
     const projectTitles = Array.from(element.querySelectorAll('.project-copy h3')).map((title) =>
       title.textContent?.trim()
     );
-    const focusPills = Array.from(element.querySelectorAll('.project-panel li')).map((pill) =>
-      pill.textContent?.trim()
+    const techLines = Array.from(element.querySelectorAll('.project-tech')).map(
+      (line) => line.textContent ?? ''
     );
 
-    expect(element.querySelector('.tech')).toBeNull();
     expect(projectTitles).toContain('AI Resume Generator');
     expect(projectTitles).toContain('Self-Tracking Telescope');
     expect(projectTitles).toContain('Kavach Webpage');
-    expect(focusPills).toContain('Python');
-    expect(focusPills).toContain('Angular');
+    expect(techLines.some((line) => line.includes('Python'))).toBe(true);
+    expect(techLines.some((line) => line.includes('Angular'))).toBe(true);
   });
 });

@@ -24,27 +24,23 @@ describe('SkillsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('renders one indexed card per skill category', () => {
+  it('renders one card with a drawn icon per skill category', () => {
     const element: HTMLElement = fixture.nativeElement;
     const cards = element.querySelectorAll('.skill-card');
-    const firstIndex = element.querySelector('.skill-index');
+    const icons = element.querySelectorAll('.skill-icon path');
 
     expect(cards.length).toBe(RESUME.skills.length);
-    expect(firstIndex?.textContent?.trim()).toBe('01');
+    expect(icons.length).toBe(RESUME.skills.length);
   });
 
-  it('renders stack categories as chips and long-form categories as lines', () => {
+  it('renders skill items as mono lines and leaves awards out of the grid', () => {
     const element: HTMLElement = fixture.nativeElement;
-    const chipTexts = Array.from(element.querySelectorAll('.skill-chips .chip')).map((chip) =>
-      chip.textContent?.trim()
-    );
     const lineTexts = Array.from(element.querySelectorAll('.skill-lines li')).map((line) =>
       line.textContent?.trim()
     );
 
-    expect(chipTexts).toContain('Angular');
-    expect(lineTexts).toContain('Engineering Excellence Award (2024)');
-    expect(lineTexts).toContain('GoLang (Udemy)');
-    expect(chipTexts).not.toContain('Engineering Excellence Award (2024)');
+    expect(lineTexts).toContain('Angular');
+    expect(lineTexts).not.toContain('Engineering Excellence Award (2024)');
+    expect(lineTexts).not.toContain('GoLang (Udemy)');
   });
 });

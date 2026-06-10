@@ -1,5 +1,5 @@
-/* Experience — vertical timeline with a fading accent rail, mono period
-   column, and glass entry cards. Tokens only; light + dark safe. */
+/* Experience — SVG-drawn timeline rail, mono period column,
+   flat entry cards with a vermilion hover hairline. */
 
 .experience-heading {
   margin-bottom: clamp(3rem, 6vw, 4.5rem);
@@ -8,206 +8,190 @@
 /* ----- Timeline scaffold ----- */
 
 .experience-timeline {
-  --rail-w: 8.75rem;
-  --rail-gap: 3.25rem;
-  --rail-x: calc(var(--rail-w) + var(--rail-gap) / 2);
   position: relative;
   display: grid;
-  gap: clamp(2rem, 4vw, 2.75rem);
+  gap: clamp(2rem, 4vw, 3rem);
+  padding-left: 1.5rem;
 }
 
-.experience-timeline::before {
-  content: '';
+.timeline-rail {
   position: absolute;
-  left: var(--rail-x);
-  top: 0.75rem;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(
-    180deg,
-    var(--accent-color),
-    var(--line-strong) 55%,
-    transparent 98%
-  );
-  pointer-events: none;
+  left: 0;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  width: 8px;
+  height: calc(100% - 0.8rem);
+
+  path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
 }
 
 .timeline-entry {
   position: relative;
   display: grid;
-  grid-template-columns: var(--rail-w) minmax(0, 1fr);
-  column-gap: var(--rail-gap);
+  grid-template-columns: minmax(9rem, 0.28fr) 1fr;
+  gap: 1.25rem clamp(1.25rem, 3vw, 2.5rem);
   align-items: start;
 }
 
-/* Node dot, aligned to the card's eyebrow line */
-.timeline-entry::before {
-  content: '';
-  position: absolute;
-  left: calc(var(--rail-x) - 3.5px);
-  top: 2.12rem;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent-color);
-  box-shadow:
-    0 0 0 4px var(--accent-soft),
-    0 0 16px var(--accent-glow);
-  z-index: 1;
+.entry-rail {
+  position: relative;
+  padding-left: 1.2rem;
 }
 
-/* ----- Period rail ----- */
-
-.entry-rail {
-  position: sticky;
-  top: 7rem;
-  padding-top: 1.78rem;
-  text-align: right;
+.entry-node {
+  position: absolute;
+  left: -1.95rem;
+  top: 0.3rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: var(--paper);
 }
 
 .entry-period {
   font-family: var(--font-mono);
-  font-size: var(--text-mono);
+  font-size: 0.74rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted-color-strong);
-  line-height: 1.6;
+  letter-spacing: 0.08em;
+  color: var(--ink);
 }
 
 .entry-location {
-  margin-top: 0.4rem;
+  margin-top: 0.3rem;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--fg-3);
+  color: var(--muted);
 }
 
-/* ----- Entry card ----- */
+/* ----- Entry cards ----- */
 
 .entry-card {
-  padding: 1.8rem clamp(1.5rem, 2.8vw, 2rem);
+  position: relative;
+  padding: 1.6rem 1.7rem;
+  overflow: hidden;
 }
 
-.entry-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--card-shadow-hover), inset 0 1px 0 var(--glass-inner);
-  border-color: var(--line-strong);
+.entry-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0.3rem;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 320ms var(--ease-out);
+}
+
+.entry-card:hover::before {
+  transform: scaleY(1);
 }
 
 .entry-company {
-  margin-bottom: 0.6rem;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--text-mono);
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: var(--track-mono);
   text-transform: uppercase;
   color: var(--accent-ink);
 }
 
 .entry-role {
-  margin-bottom: 0.85rem;
+  margin-top: 0.35rem;
   font-size: var(--text-h3);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-  text-wrap: balance;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
 .entry-description {
-  max-width: 62ch;
-  line-height: 1.75;
-  color: var(--muted-color-strong);
-}
-
-/* Impact callout strip */
-.entry-impact {
-  margin-top: 1.15rem;
-  padding: 0.9rem 1.1rem;
-  border-left: 2px solid var(--accent-color);
-  border-radius: 0.6rem;
-  background: var(--accent-softer);
+  margin-top: 0.9rem;
+  color: var(--muted-strong);
   line-height: 1.7;
-  font-weight: 500;
-  color: var(--muted-color-strong);
+  max-width: 64ch;
 }
 
-.impact-label {
-  display: block;
-  margin-bottom: 0.35rem;
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent-ink);
+.entry-impact {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border: var(--border-w) solid var(--line-strong);
+  border-left: 0.3rem solid var(--accent);
+  font-size: var(--text-small);
+  color: var(--ink);
+  line-height: 1.6;
+
+  .impact-label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: var(--track-mono);
+    text-transform: uppercase;
+    color: var(--accent-ink);
+  }
 }
 
-/* Highlights */
 .entry-highlights {
-  list-style: none;
-  margin: 1.3rem 0 0;
+  margin: 1.1rem 0 0;
   padding: 0;
+  list-style: none;
   display: grid;
   gap: 0.55rem;
+
+  li {
+    position: relative;
+    padding-left: 1.2rem;
+    font-size: var(--text-small);
+    color: var(--muted-strong);
+    line-height: 1.6;
+  }
+
+  li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.55rem;
+    height: 0.55rem;
+    background: var(--accent);
+  }
 }
 
-.entry-highlights li {
-  position: relative;
-  padding-left: 1.4rem;
-  line-height: 1.65;
-  color: var(--muted-color-strong);
-}
-
-.entry-highlights li::before {
-  content: '–';
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent-color);
-  font-weight: 600;
-}
-
-/* Technologies */
 .entry-tech {
-  list-style: none;
-  margin: 1.4rem 0 0;
+  margin: 1.25rem 0 0;
   padding: 0;
+  list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.entry-tech .chip {
-  padding: 0.3rem 0.75rem;
-  font-size: 0.78rem;
-}
-
 /* ----- Responsive ----- */
 
 @media (max-width: 860px) {
-  .experience-timeline::before,
-  .timeline-entry::before {
-    display: none;
+  .experience-timeline {
+    padding-left: 1.1rem;
   }
 
   .timeline-entry {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 0.9rem;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
   }
 
   .entry-rail {
-    position: static;
-    padding-top: 0;
-    text-align: left;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.3rem 1.1rem;
+    padding-left: 0.9rem;
   }
 
-  .entry-location {
-    margin-top: 0;
+  .entry-node {
+    left: -1.55rem;
   }
 }

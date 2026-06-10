@@ -1,63 +1,75 @@
 <section id="top" class="section hero">
-  <div class="hero-backdrop" aria-hidden="true">
-    <div class="hero-glow hero-glow-a"></div>
-    <div class="hero-glow hero-glow-b"></div>
-    <div class="hero-gridlines"></div>
-  </div>
+  <div class="section-inner">
+    <p class="hero-status">
+      <span class="status-dot" aria-hidden="true"></span>
+      Open to internships — {{ resume.location }} · {{ resume.contact.authorization }}
+    </p>
 
-  <div class="section-inner hero-inner">
-    <div class="hero-copy">
-      <p class="hero-overline">
-        <span class="status-dot" aria-hidden="true"></span>
-        Open to internships — {{ resume.location }} · {{ resume.contact.authorization }}
-      </p>
+    <h1 class="hero-title">
+      <span class="hero-name-line">{{ primaryName }}</span>&ngsp;<span
+        class="hero-name-line hero-name-outline"
+        >{{ secondaryName }}</span
+      >
+    </h1>
 
-      <h1 class="hero-title">
-        <span class="hero-name-line">{{ primaryName }}</span>&ngsp;<span
-          class="hero-name-line hero-name-accent"
-          >{{ secondaryName }}</span
-        >
-      </h1>
+    <svg
+      class="hero-underline"
+      viewBox="0 0 600 42"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      [appDrawPath]="300"
+      drawDuration="1300"
+    >
+      <path d="M6 28 C 90 8, 180 40, 280 18 S 440 34, 520 12 S 580 26, 594 18" />
+    </svg>
 
-      <p class="hero-tagline">Secure products. Polished interfaces. Grounded engineering.</p>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="hero-tagline">{{ resume.role }}.</p>
 
-      <p class="hero-summary">
-        {{ resume.summary }}
-      </p>
+        <p class="hero-summary">
+          {{ resume.summary }}
+        </p>
 
-      <div class="hero-actions">
-        <a class="btn primary" href="mailto:{{ resume.contact.email }}"> Email Vikas </a>
+        <div class="hero-actions">
+          <a class="btn primary" href="mailto:{{ resume.contact.email }}">Email Vikas</a>
 
-        <a *ngFor="let link of actionLinks" class="btn ghost" [href]="link.href">
-          {{ link.label }}
-        </a>
+          <a *ngFor="let link of actionLinks" class="btn ghost" [href]="link.href">
+            {{ link.label }}
+          </a>
+        </div>
+
+        <ul class="hero-focus" *ngIf="resume.currentFocus?.length">
+          <li *ngFor="let item of resume.currentFocus">{{ item }}</li>
+        </ul>
       </div>
 
-      <ul class="hero-focus" *ngIf="resume.currentFocus?.length">
-        <li *ngFor="let item of resume.currentFocus">
-          {{ item }}
-        </li>
-      </ul>
-    </div>
-
-    <div class="hero-stage" [class.hero-stage-fallback]="!resume.portrait">
-      <div class="portrait-stage" *ngIf="resume.portrait as portrait">
-        <div class="portrait-halo" aria-hidden="true"></div>
-        <div class="portrait-orbit" aria-hidden="true"></div>
+      <div class="hero-stage" *ngIf="resume.portrait as portrait">
+        <svg
+          class="hero-squiggle"
+          viewBox="0 0 320 320"
+          aria-hidden="true"
+          [appDrawPath]="500"
+          drawDuration="1600"
+        >
+          <path
+            d="M18 240 C 40 120, 150 30, 250 60 C 320 84, 318 190, 240 226 C 170 258, 90 220, 110 150 C 124 102, 190 92, 222 128"
+          />
+        </svg>
 
         <picture class="portrait-frame">
           <source
             *ngIf="portrait.avifSrcSet"
             type="image/avif"
             [attr.srcset]="portrait.avifSrcSet"
-            sizes="(max-width: 768px) 82vw, (max-width: 960px) 72vw, (max-width: 1280px) 36vw, 31rem"
+            sizes="(max-width: 768px) 82vw, (max-width: 1100px) 44vw, 26rem"
           />
 
           <img
             class="portrait-image"
             [src]="portrait.src"
             [attr.srcset]="portrait.srcSet || null"
-            sizes="(max-width: 768px) 82vw, (max-width: 960px) 72vw, (max-width: 1280px) 36vw, 31rem"
+            sizes="(max-width: 768px) 82vw, (max-width: 1100px) 44vw, 26rem"
             [alt]="portrait.alt"
             [attr.width]="portrait.width"
             [attr.height]="portrait.height"
@@ -68,15 +80,27 @@
           />
         </picture>
 
-        <div class="portrait-badge" aria-hidden="true">
-          <span class="badge-kicker">Currently</span>
-          <span class="badge-line">M.S. CS · Arizona State</span>
+        <div class="hero-roundel" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <defs>
+              <path
+                id="hero-roundel-circle"
+                d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"
+              />
+            </defs>
+            <text>
+              <textPath href="#hero-roundel-circle">
+                OPEN TO INTERNSHIPS · M.S. CS @ ASU ·&nbsp;
+              </textPath>
+            </text>
+          </svg>
+          <span class="roundel-center">↗</span>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="section-inner hero-metrics-wrap" *ngIf="resume.metrics?.length">
+  <div class="section-inner" *ngIf="resume.metrics?.length">
     <dl class="hero-metrics">
       <div class="metric" *ngFor="let metric of resume.metrics">
         <dt class="metric-value">{{ metric.value }}</dt>
@@ -86,12 +110,5 @@
         </dd>
       </div>
     </dl>
-  </div>
-
-  <div class="hero-marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span class="marquee-item" *ngFor="let item of marqueeItems">{{ item }}</span>
-      <span class="marquee-item" *ngFor="let item of marqueeItems">{{ item }}</span>
-    </div>
   </div>
 </section>

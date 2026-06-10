@@ -1,25 +1,41 @@
 <section id="experience" class="section">
   <div class="section-inner">
     <header class="section-heading experience-heading">
+      <svg class="section-stroke" viewBox="0 0 320 24" aria-hidden="true" appDrawPath>
+        <path d="M4 12 L 44 12 L 56 4 L 76 20 L 96 4 L 116 20 L 128 12 L 316 12" />
+      </svg>
       <p class="section-label" [appReveal]="0">02 — Experience</p>
-      <h2 [appReveal]="80">Six years building secure, business-critical software.</h2>
+      <h2 [appReveal]="80">Six years of business-critical software.</h2>
       <p [appReveal]="140">
-        From telecom messaging infrastructure to enterprise data masking, the through-line has been reliability, user trust, and execution under real product pressure.
+        Telecom messaging infrastructure first, then enterprise data masking. The constant:
+        systems people rely on, shipped on schedule.
       </p>
     </header>
 
     <div class="experience-timeline">
+      <svg
+        class="timeline-rail"
+        viewBox="0 0 8 100"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+        appDrawPath
+        drawDuration="2400"
+      >
+        <path d="M4 0 V100" />
+      </svg>
+
       <article
         *ngFor="let item of experience; let i = index"
         class="timeline-entry"
         [appReveal]="i * 90"
       >
         <div class="entry-rail">
+          <span class="entry-node" aria-hidden="true"></span>
           <p class="entry-period">{{ item.period }}</p>
           <p class="entry-location" *ngIf="item.location">{{ item.location }}</p>
         </div>
 
-        <div class="glass-card entry-card">
+        <div class="card card-pop entry-card">
           <p class="entry-company">{{ item.company }}</p>
           <h3 class="entry-role">{{ item.role }}</h3>
 
@@ -39,7 +55,7 @@
           </ul>
 
           <ul class="entry-tech" *ngIf="item.technologies?.length">
-            <li class="chip" *ngFor="let tech of item.technologies">{{ tech }}</li>
+            <li class="tag" *ngFor="let tech of item.technologies">{{ tech }}</li>
           </ul>
         </div>
       </article>

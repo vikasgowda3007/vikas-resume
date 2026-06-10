@@ -1,35 +1,8 @@
 .app-shell {
   min-height: 100vh;
-  color: var(--text-color);
+  color: var(--ink);
   position: relative;
   overflow: clip;
-}
-
-.app-shell::before,
-.app-shell::after {
-  content: '';
-  position: fixed;
-  pointer-events: none;
-  z-index: 0;
-  border-radius: 50%;
-  filter: blur(90px);
-}
-
-.app-shell::before {
-  width: 26rem;
-  height: 26rem;
-  top: 8rem;
-  right: -9rem;
-  background: var(--accent-glow);
-  opacity: 0.5;
-}
-
-.app-shell::after {
-  width: 22rem;
-  height: 22rem;
-  bottom: 10rem;
-  left: -8rem;
-  background: rgba(124, 88, 255, 0.12);
 }
 
 main {
@@ -40,7 +13,7 @@ main {
 .app-footer {
   position: relative;
   z-index: 1;
-  border-top: 1px solid var(--line-color);
+  border-top: 3px solid var(--border-ink);
   margin-top: clamp(2rem, 5vw, 4rem);
 }
 
@@ -56,9 +29,9 @@ main {
 }
 
 .footer-name {
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.02em;
-  color: var(--fg-1);
+  color: var(--ink);
 }
 
 .footer-meta {
@@ -68,13 +41,15 @@ main {
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--muted-color);
+  color: var(--muted);
 }
 
 .footer-line {
-  font-size: 0.88rem;
-  color: var(--muted-color);
-  max-width: 38ch;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  max-width: 42ch;
 }
 
 .footer-end {
@@ -87,14 +62,14 @@ main {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.14em;
-  color: var(--muted-color);
+  color: var(--muted);
 }
 
 .footer-top {
-  border: 1px solid var(--line-color);
-  border-radius: var(--radius-pill);
-  background: color-mix(in srgb, var(--surface-color) 90%, transparent);
-  color: var(--muted-color-strong);
+  border: var(--border-w) solid var(--border-ink);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink);
   font-family: var(--font-mono);
   font-size: 0.66rem;
   font-weight: 500;
@@ -105,18 +80,11 @@ main {
 }
 
 .footer-top:hover {
-  color: var(--accent-ink);
-  border-color: var(--line-strong);
-  background: var(--surface-strong);
-  transform: translateY(-1px);
+  transform: translate(-0.12rem, -0.12rem);
+  box-shadow: 0.25rem 0.25rem 0 var(--accent);
 }
 
 @media (max-width: 768px) {
-  .app-shell::before,
-  .app-shell::after {
-    opacity: 0.4;
-  }
-
   .footer-inner {
     flex-direction: column;
     align-items: flex-start;

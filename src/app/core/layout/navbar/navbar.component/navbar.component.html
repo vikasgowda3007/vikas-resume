@@ -5,13 +5,17 @@
 <header class="nav">
   <div class="nav-inner">
     <button class="nav-logo" type="button" (click)="scrollHome()" aria-label="Scroll to top">
-      <img
+      <svg
         class="brand-mark"
-        src="favicon.svg?v=20260405b"
-        alt=""
+        viewBox="0 0 40 40"
         aria-hidden="true"
-        draggable="false"
-      />
+        [appDrawPath]="200"
+        drawDuration="900"
+      >
+        <rect x="2" y="2" width="36" height="36" />
+        <path class="brand-v" d="M9 11 L15.5 29 L22 11" />
+        <path class="brand-k" d="M26 11 V29 M33 11 L26.5 19.5 L33 29" />
+      </svg>
       <span class="brand-block">
         <span class="name">{{ name }}</span>
         <span class="meta">Software Engineer</span>

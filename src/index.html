@@ -51,10 +51,8 @@
     content="Software engineer with 6 years across data security and telecommunications, currently pursuing an M.S. in Computer Science at Arizona State University."
   />
   <meta name="twitter:image" content="https://vikas-keshavamurthy.vercel.app/og-card.png?v=20260405a" />
-  <!-- Self-hosted fonts: preload the weights used above the fold -->
-  <link rel="preload" href="fonts/Manrope-800.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="fonts/Manrope-400.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="fonts/Manrope-600.woff2" as="font" type="font/woff2" crossorigin />
+  <!-- Self-hosted fonts: preload the families used above the fold -->
+  <link rel="preload" href="fonts/SpaceGrotesk-var.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/IBMPlexMono-500.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- Inline theme init so the first paint matches the user's saved or system preference -->
@@ -70,7 +68,7 @@
         root.classList.toggle('dark', shouldUseDark);
         root.classList.toggle('light', stored === 'light');
         root.style.colorScheme = shouldUseDark ? 'dark' : 'light';
-        themeColorMeta?.setAttribute('content', shouldUseDark ? '#04070f' : '#f8fbff');
+        themeColorMeta?.setAttribute('content', shouldUseDark ? '#0f0c09' : '#faf7f2');
       } catch (e) {
         /* ignore errors (e.g., private mode) */
       }
@@ -80,21 +78,21 @@
   <!-- Minimal initial CSS so first paint respects theme variables -->
   <style>
     :root {
-      --text-color: #0f172a;
-      --background-color: #f4f7fb;
+      --text-color: #171310;
+      --background-color: #faf7f2;
       color-scheme: light;
     }
 
     :root.dark {
-      --text-color: #f5f7fb;
-      --background-color: #04070f;
+      --text-color: #f3ede4;
+      --background-color: #0f0c09;
       color-scheme: dark;
     }
 
     @media (prefers-color-scheme: dark) {
       :root:not(.light):not(.dark) {
-        --text-color: #f5f7fb;
-        --background-color: #04070f;
+        --text-color: #f3ede4;
+        --background-color: #0f0c09;
         color-scheme: dark;
       }
     }
@@ -114,7 +112,7 @@
     }
   </style>
 
-  <meta name="theme-color" content="#f8fbff">
+  <meta name="theme-color" content="#faf7f2">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",

@@ -1,8 +1,13 @@
 <section id="about" class="section">
   <div class="section-inner about-shell">
     <div class="about-rail">
-      <p class="section-label" [appReveal]="0">01 — Current trajectory</p>
-      <h2 [appReveal]="80">Experienced engineer now building the next chapter through an M.S. in Computer Science at Arizona State University.</h2>
+      <svg class="section-stroke" viewBox="0 0 320 24" aria-hidden="true" appDrawPath>
+        <path d="M4 16 Q 44 2, 84 14 T 164 12 T 244 16 T 316 10" />
+      </svg>
+      <p class="section-label" [appReveal]="0">01 — About</p>
+      <h2 [appReveal]="80">
+        Six years of shipping, now sharpening the toolkit at Arizona State.
+      </h2>
     </div>
 
     <div class="about-body">
@@ -30,9 +35,13 @@
       <div class="education-stack" *ngIf="resume.education.length">
         <article
           *ngFor="let edu of resume.education; let i = index"
-          class="glass-card education-card"
+          class="card education-card"
           [appReveal]="280 + i * 90"
         >
+          <svg class="corner-bracket" viewBox="0 0 48 48" aria-hidden="true" [appDrawPath]="200">
+            <path d="M44 4 H10 Q4 4 4 10 V44" />
+          </svg>
+
           <div class="education-top">
             <div class="education-id">
               <p class="edu-school">{{ edu.school }}</p>
@@ -50,6 +59,13 @@
             <li *ngFor="let highlight of edu.highlights">{{ highlight }}</li>
           </ul>
         </article>
+      </div>
+
+      <div class="recognition" *ngIf="resume.recognition?.length" [appReveal]="460">
+        <p class="recognition-label">Recognition</p>
+        <ul class="recognition-list">
+          <li *ngFor="let award of resume.recognition">{{ award }}</li>
+        </ul>
       </div>
     </div>
   </div>

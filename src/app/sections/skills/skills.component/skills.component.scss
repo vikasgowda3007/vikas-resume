@@ -1,4 +1,4 @@
-/* Skills — indexed category cards on a calm three-column grid. */
+/* Skills — four flat category cards, each opened by a drawn stroke icon. */
 
 .section-heading {
   margin-bottom: clamp(2.6rem, 5vw, 4rem);
@@ -6,95 +6,63 @@
 
 .skill-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.1rem;
 }
 
 .skill-card {
-  padding: 1.6rem;
-  display: flex;
-  flex-direction: column;
+  padding: 1.5rem 1.4rem 1.6rem;
 }
 
-.skill-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--card-shadow-hover), inset 0 1px 0 var(--glass-inner);
-}
+.skill-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-bottom: 1.1rem;
 
-.skill-index {
-  margin: 0 0 1.1rem;
-  font-family: var(--font-mono);
-  font-size: var(--text-mono);
-  font-weight: 500;
-  letter-spacing: var(--track-mono);
-  color: var(--fg-3);
+  path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
 }
 
 .skill-card h3 {
   font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: -0.015em;
-  margin-bottom: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
-/* Wrapping chips for tool/stack categories. */
-.skill-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.skill-chips .chip {
-  padding: 0.36rem 0.8rem;
-  font-size: 0.8rem;
-  transition:
-    border-color var(--speed-fast) ease,
-    color var(--speed-fast) ease,
-    background-color var(--speed-fast) ease;
-}
-
-.skill-chips .chip:hover {
-  border-color: var(--accent-color);
-  color: var(--accent-ink);
-  background: var(--accent-soft);
-}
-
-/* Longer strings (awards, certifications) read better as ruled lines. */
 .skill-lines {
-  list-style: none;
-  margin: 0;
+  margin: 1rem 0 0;
   padding: 0;
-  display: grid;
-  gap: 0.55rem;
+  list-style: none;
+
+  li {
+    padding: 0.45rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.04em;
+    color: var(--muted-strong);
+    border-bottom: var(--border-w) solid var(--line);
+  }
+
+  li:last-child {
+    border-bottom: none;
+  }
 }
 
-.skill-lines li {
-  position: relative;
-  padding-left: 1.15rem;
-  font-size: var(--text-small);
-  font-weight: 500;
-  line-height: 1.55;
-  color: var(--muted-color-strong);
-}
+/* ----- Responsive ----- */
 
-.skill-lines li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.66em;
-  width: 0.55rem;
-  height: 1px;
-  background: var(--accent-color);
-}
-
-@media (max-width: 960px) {
+@media (max-width: 1100px) {
   .skill-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 560px) {
   .skill-grid {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 1fr;
   }
 }

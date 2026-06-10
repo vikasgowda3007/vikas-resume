@@ -3,11 +3,12 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ContactInfo, ResumeLink } from '../../../core/models/resume/resume.module';
 import { isLinkedInProfileLink } from '../../../core/linkedin-badge';
 import { RevealDirective } from '../../../core/reveal.directive';
+import { DrawPathDirective } from '../../../core/draw-path.directive';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, RevealDirective],
+  imports: [CommonModule, RevealDirective, DrawPathDirective],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })

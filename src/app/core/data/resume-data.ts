@@ -2,12 +2,12 @@ import { Resume } from '../models/resume/resume.module';
 
 export const RESUME: Resume = {
   name: 'Vikas Keshavamurthy',
-  role: 'Software engineer with 6 years across data security and telecommunications',
+  role: 'I build secure, dependable product software',
   location: 'Tempe, AZ',
   summary:
-    'Experienced engineer intentionally pursuing internships and adjacent product engineering roles while completing an M.S. in Computer Science at Arizona State University. Strongest in Angular-first full-stack delivery with Java or Node.js, with hands-on experience in secure product design, release leadership, and AI-assisted workflow tooling.',
+    'Six years shipping enterprise software across data security and telecom, now completing an M.S. in Computer Science at Arizona State University. I work best across the full stack — Angular frontends, Java and Node.js services — and care about software that holds up under real use.',
   profileStatement:
-    'Currently completing an M.S. in Computer Science at Arizona State University, serving as a Teaching Assistant / Grader for Software Security, and looking for opportunities where secure systems and thoughtful product experience intersect.',
+    'I spent six years shipping enterprise software — the Masking Engine at Delphix, telecom messaging at Comviva — before moving to Tempe for grad school. These days I split my time between coursework, grading for ASU’s Software Security class, and building with AI tooling. I’m looking for an internship where I can ship real product.',
   portrait: {
     src: 'assets/portraits/vikas-hero-1120.jpg',
     srcSet: 'assets/portraits/vikas-hero-760.jpg 760w, assets/portraits/vikas-hero-1120.jpg 1120w',
@@ -35,9 +35,10 @@ export const RESUME: Resume = {
     }
   ],
   coursework: [
-    'Software and Network Security',
+    'Software Security',
+    'Advanced Computer Network Security',
     'Distributed Database Systems',
-    'AI',
+    'Artificial Intelligence',
     'Knowledge Representation',
     'Software Design'
   ],
@@ -45,7 +46,7 @@ export const RESUME: Resume = {
     'M.S. in Computer Science at Arizona State University',
     'Teaching Assistant / Grader for Software Security',
     'Angular + Java / Node.js product engineering',
-    'Python automation and AI-assisted development workflows'
+    'Building an AI resume-tailoring product with Python and LLMs'
   ],
   links: [
     {
@@ -60,7 +61,7 @@ export const RESUME: Resume = {
     },
     {
       label: 'Resume PDF',
-      href: 'assets/Vikas-Keshavamurthy-Software-Developer-Intern.pdf',
+      href: 'assets/Vikas-Keshavamurthy-Resume.pdf',
       external: false
     }
   ],
@@ -71,13 +72,14 @@ export const RESUME: Resume = {
       period: 'Jul 2021 – May 2025',
       location: 'India',
       description:
-        'Owned full-stack delivery for the Masking Engine, translating security-heavy workflows into cleaner Angular experiences backed by Java services and reliable release operations.',
+        'Owned full-stack delivery for the Masking Engine — the Angular frontend, the Java services behind it, and the release process that shipped them.',
       impact:
-        'Reduced bug backlog by 30%, improved customer satisfaction by 15%, and cut testing time by 20% through UI modernization and release discipline.',
+        'Cut the bug backlog by 30%, lifted customer satisfaction 15%, and reduced testing time 20% through UI modernization and steadier releases.',
       highlights: [
         'Built and maintained RESTful integrations between the Angular frontend and Java backend services for an enterprise data security platform.',
-        'Led end-to-end release cycles, coordinating QA signoffs and deployments across two parallel development teams.',
-        'Performed systematic debugging and performance work across Java, JavaScript, Docker, PostgreSQL, and internal automation scripts.'
+        'Led end-to-end release cycles as designated release engineer, coordinating QA signoffs and deployments across two parallel development teams.',
+        'Partnered with product, QA, and security teams to deliver data-masking features that protected PII across enterprise deployments.',
+        'Mentored junior developers and performed root-cause analysis of distributed service issues across Java, JavaScript, Docker, and PostgreSQL.'
       ],
       technologies: ['Angular', 'Java', 'JavaScript', 'Python', 'Docker', 'PostgreSQL', 'Jenkins']
     },
@@ -87,9 +89,9 @@ export const RESUME: Resume = {
       period: 'Aug 2019 – Jul 2021',
       location: 'India',
       description:
-        'Built telecom messaging infrastructure across SMS, MMS, and USSD, combining high-throughput backend services with pricing and operations tooling.',
+        'Built telecom messaging infrastructure — SMS, MMS, USSD — from high-throughput backend services down to pricing and operations tooling.',
       impact:
-        'Grew into the team’s SMSC subject matter expert while helping ship routing, firewall, and pricing workflows for telecom clients.',
+        'Became the team’s SMSC subject-matter expert, leading firewall and SMSHub integration projects across multiple telecom client deployments.',
       highlights: [
         'Designed and developed the UNO messaging platform for 4G traffic using GoLang, MySQL, Oracle DB, and Redis.',
         'Implemented time and volume restrictions for SMS traffic plus an Opt-In / Opt-Out Do Not Disturb workflow using Java and MySQL.',
@@ -103,7 +105,7 @@ export const RESUME: Resume = {
       period: 'Jan 2019 – May 2019',
       location: 'India',
       description:
-        'Focused on observability and search-driven traceability for production systems during an early engineering internship.',
+        'Worked on observability and search for production systems during an early engineering internship.',
       highlights: [
         'Designed Elasticsearch-based activity logging to capture and query user actions in real time.',
         'Integrated Lucene search capabilities to improve retrieval speed and platform traceability.'
@@ -115,27 +117,27 @@ export const RESUME: Resume = {
     {
       name: 'AI Resume Generator',
       type: 'Personal Project',
-      tagline: 'Grounded document generation with structured profile context.',
+      tagline: 'One command turns a job description into a tailored, truthful resume.',
       description:
-        'Built an AI-powered resume and cover letter generator using Python, Groq LLM APIs, and python-docx, with a master-profile architecture that keeps generated application materials aligned to real experience.',
-      period: 'Mar 2026',
-      technologies: ['Python', 'Groq LLM API', 'python-docx', 'Prompt Engineering']
+        'A local AI product that tailors a resume and cover letter to any job description — Llama 3.3-70B via Groq, with a master-profile schema that keeps every generated line traceable to real experience. Grew from a script into a licensed web app with job-fit scoring, Gmail application tracking, and a memory system that learns preferences over time.',
+      period: 'Mar 2026 – Present',
+      technologies: ['Python', 'Groq LLM API', 'Llama 3.3-70B', 'Flask / Dash', 'Gmail API', 'python-docx']
     },
     {
       name: 'Self-Tracking Telescope',
       type: 'Class Project',
-      tagline: 'Autonomous celestial tracking through sensors and control loops.',
+      tagline: 'A telescope that finds and follows the night sky on its own.',
       description:
-        'Designed and developed a self-tracking telescope that combines sensing, actuation, and control logic to automatically follow celestial objects and maintain focus.',
+        'Class project combining sensors, actuators, and a control loop so the telescope locks onto a celestial object and keeps tracking it as the sky moves.',
       period: 'Sep 2025',
       technologies: ['Embedded Systems', 'Real-time Computing', 'Sensors & Actuators']
     },
     {
       name: 'Kavach Webpage',
       type: 'Personal Project',
-      tagline: 'Public-facing onboarding and publishing experience for Kavach.',
+      tagline: 'Onboarding site for an open-source authentication library.',
       description:
-        'Developed an Angular-based webpage for onboarding and publishing information around the open-source Kavach authentication library.',
+        'Angular site introducing the open-source Kavach authentication library — docs, onboarding, and publishing information for new users.',
       period: 'Summer 2020',
       technologies: ['Angular', 'HTML', 'CSS', 'JavaScript']
     }
@@ -156,24 +158,12 @@ export const RESUME: Resume = {
     {
       category: 'Data, DevOps & Tooling',
       items: ['PostgreSQL', 'MySQL', 'Oracle DB', 'MS SQL', 'Docker', 'Jenkins', 'GitHub Copilot']
-    },
-    {
-      category: 'Recognition',
-      items: [
-        'Engineering Excellence Award (2024)',
-        'Best Talent Award (FY20-21)',
-        'Heroes of MBS Award'
-      ]
-    },
-    {
-      category: 'Certifications',
-      items: [
-        'The Complete Node.js Developer Course (Udemy)',
-        'GoLang (Udemy)',
-        'React.js (Udemy)',
-        'SIP (Udemy)'
-      ]
     }
+  ],
+  recognition: [
+    'Engineering Excellence Award (2024)',
+    'Best Talent Award (FY20-21)',
+    'Heroes of MBS Award'
   ],
   education: [
     {
@@ -181,10 +171,10 @@ export const RESUME: Resume = {
       degree: 'M.S. in Computer Science',
       period: 'Aug 2025 – May 2027',
       location: 'Tempe, AZ',
-      gpa: '3.67',
+      gpa: '3.78',
       highlights: [
         'Teaching Assistant / Grader for Software Security',
-        'Coursework: Software and Network Security, Distributed Database Systems, AI, Knowledge Representation, Software Design'
+        'Coursework: Software Security, Advanced Computer Network Security, Distributed Database Systems, Artificial Intelligence, Knowledge Representation, Software Design'
       ]
     },
     {
@@ -200,7 +190,7 @@ export const RESUME: Resume = {
     phone: '623-274-7294',
     location: 'Tempe, AZ',
     availability:
-      'Open to software engineering internships and adjacent product development roles while completing an M.S. in Computer Science.',
+      'Open to software engineering internships and product roles while I finish my M.S. in Computer Science (May 2027).',
     authorization: 'F-1 student on CPT'
   }
 };

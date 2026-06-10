@@ -1,53 +1,65 @@
 <section id="contact" class="section">
-  <div class="section-inner">
-    <div class="contact-stage">
-      <header class="section-heading" appReveal>
-        <p class="section-label">05 — Contact</p>
-        <h2>Open to thoughtful software engineering work with good teams.</h2>
-        <p *ngIf="contact.availability">{{ contact.availability }}</p>
-      </header>
+  <div class="section-inner contact-stage">
+    <header class="section-heading" appReveal>
+      <p class="section-label">05 — Contact</p>
+      <h2>Let's talk.</h2>
+      <p *ngIf="contact.availability">{{ contact.availability }}</p>
+    </header>
 
-      <div class="email-block" [appReveal]="120">
-        <a class="email-link" href="mailto:{{ contact.email }}">
-          <span>{{ contact.email }}</span>
-        </a>
-        <button
-          type="button"
-          class="copy-pill"
-          (click)="copyEmail()"
-          [class.is-copied]="copied()"
-          aria-live="polite"
-        >
-          {{ copied() ? 'Copied' : 'Copy email' }}
-        </button>
-      </div>
+    <svg
+      class="contact-arrow"
+      viewBox="0 0 220 120"
+      aria-hidden="true"
+      appDrawPath
+      drawDuration="1400"
+    >
+      <path d="M12 18 C 90 4, 190 24, 178 62 C 168 94, 96 96, 92 64 C 90 44, 130 38, 158 58 C 178 72, 192 90, 198 104" />
+      <path d="M180 96 L 198 104 L 202 86" />
+    </svg>
 
-      <div class="meta-row" [appReveal]="200">
-        <span class="chip">{{ contact.location }}</span>
-        <span *ngIf="contact.phone" class="chip">{{ contact.phone }}</span>
-        <span *ngIf="contact.authorization" class="chip">{{ contact.authorization }}</span>
-      </div>
+    <div class="email-block" [appReveal]="120">
+      <a class="email-link" href="mailto:{{ contact.email }}">
+        <span class="email-text">{{ contact.email }}</span>
+        <svg class="email-underline" viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M4 14 Q 150 4, 300 14 T 596 12" />
+        </svg>
+      </a>
+      <button
+        type="button"
+        class="copy-pill"
+        (click)="copyEmail()"
+        [class.is-copied]="copied()"
+        aria-live="polite"
+      >
+        {{ copied() ? 'Copied' : 'Copy email' }}
+      </button>
+    </div>
 
-      <div class="action-row" [appReveal]="280">
-        <a
-          *ngIf="linkedinLink as linkedin"
-          class="btn primary"
-          [href]="linkedin.href"
-          target="_blank"
-          rel="noreferrer"
-        >
-          {{ linkedin.label }}
-        </a>
-        <a
-          *ngFor="let link of otherLinks"
-          class="btn ghost"
-          [href]="link.href"
-          [attr.target]="link.external ? '_blank' : null"
-          [attr.rel]="link.external ? 'noreferrer' : null"
-        >
-          {{ link.label }}
-        </a>
-      </div>
+    <div class="meta-row" [appReveal]="200">
+      <span class="tag">{{ contact.location }}</span>
+      <span *ngIf="contact.phone" class="tag">{{ contact.phone }}</span>
+      <span *ngIf="contact.authorization" class="tag">{{ contact.authorization }}</span>
+    </div>
+
+    <div class="action-row" [appReveal]="280">
+      <a
+        *ngIf="linkedinLink as linkedin"
+        class="btn primary"
+        [href]="linkedin.href"
+        target="_blank"
+        rel="noreferrer"
+      >
+        {{ linkedin.label }}
+      </a>
+      <a
+        *ngFor="let link of otherLinks"
+        class="btn ghost"
+        [href]="link.href"
+        [attr.target]="link.external ? '_blank' : null"
+        [attr.rel]="link.external ? 'noreferrer' : null"
+      >
+        {{ link.label }}
+      </a>
     </div>
   </div>
 </section>

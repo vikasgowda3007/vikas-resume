@@ -1,10 +1,11 @@
 import { Component, DestroyRef, Input, afterNextRender, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DrawPathDirective } from '../../../draw-path.directive';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DrawPathDirective],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
@@ -60,7 +61,7 @@ export class NavbarComponent {
 
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute('content', next === 'dark' ? '#04070f' : '#f8fbff');
+      ?.setAttribute('content', next === 'dark' ? '#0f0c09' : '#faf7f2');
 
     this.isDark.set(next === 'dark');
   }

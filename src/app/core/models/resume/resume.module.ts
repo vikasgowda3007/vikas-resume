@@ -78,6 +78,7 @@ export interface Resume {
   metrics?: ResumeMetric[];
   coursework?: string[];
   currentFocus?: string[];
+  recognition?: string[];
   profileStatement?: string;
   portrait?: ResumePortrait;
 }

@@ -2,11 +2,12 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Resume, ResumeLink } from '../../../core/models/resume/resume.module';
 import { isLinkedInProfileLink } from '../../../core/linkedin-badge';
+import { DrawPathDirective } from '../../../core/draw-path.directive';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DrawPathDirective],
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.scss']
 })
@@ -25,16 +26,5 @@ export class HeroComponent {
 
   get actionLinks(): ResumeLink[] {
     return this.resume.links.filter((link) => !isLinkedInProfileLink(link.href));
-  }
-
-  /** Unique technologies across all roles, for the ambient ticker. */
-  get marqueeItems(): string[] {
-    const seen = new Set<string>();
-    for (const role of this.resume.experience) {
-      for (const tech of role.technologies ?? []) {
-        seen.add(tech);
-      }
-    }
-    return [...seen];
   }
 }
